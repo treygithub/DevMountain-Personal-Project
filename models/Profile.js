@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 //create schema
 const ProfileSchema = new Schema({
     user:{
-        type: Schema.Types.ObjectsId,
-        ref: "users"
+        type: Schema.Types.ObjectId,
+        ref: 'users'
     },
     handle:{
         type: String,
@@ -16,7 +16,7 @@ const ProfileSchema = new Schema({
         type:String
     },
     website:{
-        type:string
+        type:String
     },
     location:{
         type:String
@@ -44,7 +44,7 @@ const ProfileSchema = new Schema({
         company:{
             type:String,
             required:true
-            },
+        },
         location:{
             type:String
         },
@@ -56,7 +56,6 @@ const ProfileSchema = new Schema({
             type:Date
         },
         current:{
-
             type:Boolean,
             default:false
         },
