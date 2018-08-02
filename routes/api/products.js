@@ -11,7 +11,7 @@ const Product = require('../../models/product');
 
 //Get
 router.get('/',(req,res,next) => {
-    res.status(200).json({mesg: 'get req to products is totally working'})
+    res.status(200).json([{mesg: 'get req to products is totally working'}])
 });
 
 //post
