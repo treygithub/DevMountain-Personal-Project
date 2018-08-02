@@ -23,7 +23,7 @@ class Menu extends Component {
     }
     //Get
     getProducts(){
-      axios.get('/api/fetchListings').then(payload2 => {
+      axios.get('/api/product').then(payload2 => {
         this.setState({
           items: payload2.data
         });
@@ -37,9 +37,10 @@ class Menu extends Component {
           <Col sm="4">
           <Product 
             key={i}
-            id={e.card_id}
-            url={e.url}
-            title={e.title}
+            name={e.name}
+            price={e.price}
+            description={e.description}
+            categoryId={e.categoryId}
             />  
             </Col>
          )})

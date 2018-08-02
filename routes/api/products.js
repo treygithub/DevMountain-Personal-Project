@@ -3,6 +3,11 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
+const mongoose = require('mongoose');
+
+
+//Load product model
+const Product = require('../../models/product');
 
 //Get
 router.get('/',(req,res,next) => {
@@ -11,10 +16,22 @@ router.get('/',(req,res,next) => {
 
 //post
 router.post('/', (req, res, next) => {
-    res.status(200).json({mesg: 'post req is working, from product page'})
+      const product = new Product({
+        name: req.body.name,
+        price: req.body.price,
+        description: req.body.description,
+        categoryId: req.body.categoryId
+     })
+     product.save()
+     .then(result => {
+         console.log(result);
+     })
+     .catch(err => console.log(err));
+    res.status(200).json({mesg: 'post req is working, from product page',
+    createdProduct: product});
 });
 
-//get Id
+//get params :Id
 router.get('/:productId', (req, res, next) => {
     const id = req.params.productId;
     if(id === 'special'){
