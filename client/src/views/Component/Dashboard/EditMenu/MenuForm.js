@@ -11,11 +11,11 @@ class MenuForm extends Component {
           <Input type="text" name="item" id="itemName" placeholder="Enter item name" />
         </FormGroup>
         <FormGroup>
-          <Label for="examplePassword"></Label>
-          <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+          <Label for="itemPrice"></Label>
+          <Input type="number" name="price" id="itemPrice" placeholder="Enter Dollar amount" />
         </FormGroup>
         <FormGroup>
-          <Label for="SelectCategory">Select Category</Label>
+          <Label for="SelectCategory">Select Menu Category</Label>
           <Input type="select" name="select" id="SelectCategory">
             <option>1</option>
             <option>2</option>
@@ -25,44 +25,17 @@ class MenuForm extends Component {
           </Input>
         </FormGroup>
         <FormGroup>
-          <Label for="exampleText">Description Area</Label>
-          <Input type="textarea" name="text" id="exampleText" />
+          <Label for="description">Description Area</Label>
+          <Input type="textarea" name="text" id="description" placeholder="Optional...." />
         </FormGroup>
         <FormGroup>
           <Label for="exampleFile">File</Label>
           <Input type="file" name="file" id="exampleFile" />
           <FormText color="muted">
-            This is some placeholder block-level help text for the above input.
-            It's a bit lighter and easily wraps to a new line.
+            Picture and Description fields are optional, however every item must have a name, price and Category.
           </FormText>
         </FormGroup>
-        <FormGroup tag="fieldset">
-          <legend>Radio Buttons</legend>
-          <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio1" />{' '}
-              Option one is this and that—be sure to include why it's great
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio1" />{' '}
-              Option two can be something else and selecting it will deselect option one
-            </Label>
-          </FormGroup>
-          <FormGroup check disabled>
-            <Label check>
-              <Input type="radio" name="radio1" disabled />{' '}
-              Option three is disabled
-            </Label>
-          </FormGroup>
-        </FormGroup>
-        <FormGroup check>
-          <Label check>
-            <Input type="checkbox" />{' '}
-            Check me out
-          </Label>
-        </FormGroup>
+     
         <Button>Submit</Button>
       </Form>
     );

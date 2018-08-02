@@ -1,18 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
-const mongoose = require('mongoose');
 
 //Load input validation middleWear
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
 //Load user model
-const admin = require('../../models/Admin');
+const Admin = require('../../models/Admin');
 
 //@route Get api/users/test
 //@desc  Tests users route
@@ -55,7 +53,7 @@ router.post('/register', (req, res) => {
     })
 });
 
-//@route Get api/users/login
+//@route Post api/users/login
 //@desc  login user / return jwt token
 //access Public
 router.post('/login',(req,res) => {
@@ -71,7 +69,7 @@ router.post('/login',(req,res) => {
     const password = req.body.password;
 
     //Find user by email
-    User.findOne({email})
+    Admin.findOne({email})
     .then(admin => {
         //check for user
         if(!admin) {
@@ -112,9 +110,11 @@ router.post('/login',(req,res) => {
 router.get('/current', 
 passport.authenticate('jwt', {session: false}),
  (req, res ) => {
-    res.json({id: req.user.id,
-    name:req.user.name,
-email: req.user.email});
+     const id = req.body._id;
+     const name = req.body.name;
+     const email = req.body.email;
+
+return  res.json({id,name,email});
 }
 );
 

@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
+//routes chnage dir
 const admins = require('./routes/api/admin');
-// const posts = require('./routes/api/posts');
+const products= require('./routes/api/products');
 
 const app = express();
 
@@ -29,7 +30,21 @@ require('./config/passport')(passport);
 
 // Use Routes
 app.use('/api/admin', admins);
-// app.use('/api/posts', posts);
+app.use('/api/products', products);
+
+//Error message
+app.use((req,res,next)=>{
+  const error = new Error('Sorry, not found !');
+  error.status=404;
+  next(error);
+})
+
+app.use((error, req,res,next) => {
+  res.status(error.status || 500);
+  res.json({error:{
+    message:error.message
+  }})
+})
 
 const port = process.env.PORT || 5000;
 
