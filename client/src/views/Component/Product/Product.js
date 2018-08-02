@@ -9,10 +9,10 @@ const Product = (props) => {
   return (
     <div>
       <Card className="deck">
-        <CardImg top width="100%" src={props.url} alt="Card image cap" />
+        {/* <CardImg top width="100%"  alt="Card image cap" /> */}
         <CardBody>
-          <CardTitle> {props.title}</CardTitle>
-          <CardSubtitle> {props.id} </CardSubtitle>
+          <CardTitle> {props.name}</CardTitle>
+          <CardSubtitle> {props.price} </CardSubtitle>
           <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
           <ButtonToolbar>
             <ButtonGroup>
@@ -20,7 +20,7 @@ const Product = (props) => {
             </ButtonGroup>
             <ButtonGroup>
               <DeleteBTN
-              id={props.id}
+              // id={props.categoryId}
               />
             </ButtonGroup> 
             </ButtonToolbar>  

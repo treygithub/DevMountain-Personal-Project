@@ -16,14 +16,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Cors Error handler
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Request-With, Content-Type, Accept, Authorization');
-//   if(req.method === 'OPTIONS'){
-//     res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-//     return res.status(200).json({});
-//   }
-// })
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Request-With, Content-Type, Accept, Authorization');
+  if(req.method === 'OPTIONS'){
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+    return res.status(200).json({});
+  }
+})
 
 // DB Config
 const db = require('./config/keys').mongoURI;
@@ -45,7 +45,7 @@ app.use('/api/admin', admins);
 app.use('/api/product', products);
 app.use('/api/category', categorys);
 
-//Error message
+//My Error Message .Catch all
 app.use((req,res,next)=>{
   const error = new Error('Sorry, not found !');
   error.status=404;

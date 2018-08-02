@@ -3,10 +3,11 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
+const mongoose = require('mongoose');
 
 
 //Load product model
-const category = require('../../models/category');
+const Category = require('../../models/category');
 
 //Get
 router.get('/',(req,res,next) => {
@@ -15,12 +16,12 @@ router.get('/',(req,res,next) => {
 
 //post
 router.post('/', (req, res, next) => {
-    const product = new Product({
+    const category = new Category({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         catId: req.body.catId
      })
-     product.save()
+     category.save()
      .then(result => {
          console.log(result);
      })

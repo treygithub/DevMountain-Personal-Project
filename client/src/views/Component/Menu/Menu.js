@@ -10,9 +10,10 @@ class Menu extends Component {
     super(props);
     this.state = {
       items:[],
-      id: '',
-      url:'',
-      title:''
+      name: '',
+      price:'',
+      description:'',
+      categoryId:''
     }
    
     this.getProducts = this.getProducts.bind(this)
@@ -24,6 +25,7 @@ class Menu extends Component {
     //Get
     getProducts(){
       axios.get('/api/product').then(payload2 => {
+        console.log(payload2)
         this.setState({
           items: payload2.data
         });

@@ -11,12 +11,13 @@ const Product = require('../../models/product');
 
 //Get
 router.get('/',(req,res,next) => {
-    res.status(200).json({mesg: 'get req to products is totally working'})
+    res.status(200).json([{mesg: 'get req to products is totally working'}])
 });
 
 //post
 router.post('/', (req, res, next) => {
       const product = new Product({
+        _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
         price: req.body.price,
         description: req.body.description,
