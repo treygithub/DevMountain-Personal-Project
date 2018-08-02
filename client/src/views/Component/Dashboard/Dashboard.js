@@ -56,8 +56,8 @@ class DashBoard extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>Traversy Media</td>
-                  <td>Instructor  Developer</td>
+                  <td></td>
+                  <td></td>
                   <td>
                     02-03-2015 - Now
                   </td>

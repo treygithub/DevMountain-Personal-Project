@@ -11,7 +11,7 @@ const Product = require('../../models/product');
 
 //Get
 router.get('/',(req,res,next) => {
-    res.status(200).json([{mesg: 'get req to products is totally working'}])
+    res.status(200).json({mesg: 'get req to products is totally working'})
 });
 
 //post
@@ -35,13 +35,16 @@ router.post('/', (req, res, next) => {
 //get params :Id
 router.get('/:productId', (req, res, next) => {
     const id = req.params.productId;
-    if(id === 'special'){
-        res.status(200).json({
-            message:'get request working with params id'
+  Product.findById(id)
+        .exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({error: err})
         });
-    } else {
-        res.status(200).json({mesg:'hey tay'})
-    }
 });
 
 //Edit
