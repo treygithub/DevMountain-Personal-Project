@@ -69,9 +69,25 @@ router.get('/:CatId', (req, res, next) => {
     })
 
 //Edit
-router.put('/:catId', (req, res, next) => {
-        res.status(200).json({mesg:'you just updated a category!'})
-    });
+router.patch("/:catId", (req, res, next) => {
+    const id = req.params.catId;
+    const updateOps = {};
+    for (const ops of req.body) {
+      updateOps[ops.propName] = ops.value;
+    }
+    Category.update({ _id: id }, { $set: updateOps })
+      .exec()
+      .then(result => {
+        console.log(result);
+        res.status(200).json(result);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({
+          error: err
+        });
+      });
+  });
 
 //Delete
 router.delete('/:CatId', (req, res, next) => {
