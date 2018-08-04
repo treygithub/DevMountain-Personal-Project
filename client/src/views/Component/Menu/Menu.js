@@ -13,7 +13,9 @@ class Menu extends Component {
       name: '',
       price:'',
       description:'',
-      categoryId:''
+      catId:'',
+      img:'',
+      id:''
     }
    
     this.getProducts = this.getProducts.bind(this)
@@ -24,10 +26,10 @@ class Menu extends Component {
     }
     //Get
     getProducts(){
-      axios.get('/api/product').then(payload2 => {
-        console.log(payload2)
+      axios.get('/api/product').then(payload => {
+        console.log(payload)
         this.setState({
-          items: payload2.data
+          items: payload.data
         });
       })
     }
@@ -42,7 +44,9 @@ class Menu extends Component {
             name={e.name}
             price={e.price}
             description={e.description}
-            categoryId={e.categoryId}
+            catId={e.catId}
+            img={e.img}
+            id={e._id}
             />  
             </Col>
          )})

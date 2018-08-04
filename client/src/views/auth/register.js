@@ -34,7 +34,6 @@ class Register extends Component {
       .catch(err => console.log(err.response.data))
     }  
 
-
     render(){
   return (
     <div>

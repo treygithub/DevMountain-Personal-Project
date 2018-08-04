@@ -1,3 +1,4 @@
+// ALL END POINTS IN THIS FOLDER ARE PREPENDED WITH  /api/admin
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
@@ -12,15 +13,10 @@ const validateLoginInput = require('../../validation/login');
 //Load user model
 const Admin = require('../../models/Admin');
 
-//@route Get api/users/test
-//@desc  Tests users route
-//access Public
-router.get('/test', (req, res) => res.json({msg:'User-page-is-alive'}));
-
 //@route post api/users/register
 //@desc  register users route
 //access Public
-router.post('/register', (req, res) => {
+router.post('/register', passport.authenticate('jwt', {session: false}), (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
     //check validation
@@ -72,7 +68,7 @@ router.post('/login',(req,res) => {
     .then(admin => {
         //check for user
         if(!admin) {
-            errors.email = 'User not found';
+            errors.email = 'Auth failed';
             return res.status(404).json(errors);
         }
         //check password
@@ -102,19 +98,36 @@ router.post('/login',(req,res) => {
     });
 });
 
-
-//@route Get api/users/current
-//@desc  Return current user
-//@access Public
-router.get('/current', 
-passport.authenticate('jwt', {session: false}),
- (req, res ) => {
-     const id = req.body._id;
-     const name = req.body.name;
-     const email = req.body.email;
-
-return  res.json({id,name,email});
-}
-);
-
-module.exports = router;
+//@route Delete api/admin/current
+//@desc  Delete admin
+//@access Private
+router.delete('/:adminid',passport.authenticate('jwt', {session: false}),
+ (req, res, next ) => {
+Admin.remove({_id: req.params.adminid})
+.then(result => {
+    res.status(200).json({
+        message: 'Admin deleted'
+    });
+})
+.catch(err => {
+    res.status(500).json({
+      error: err
+    });
+  });
+});
+// @route   GET api/users/current
+// @desc    Return current user
+// @access  Private
+router.get(
+    '/current',
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => {
+      res.json({
+        id: req.user.id,
+        name: req.user.name,
+        email: req.user.email
+      });
+    }
+  );
+  
+  module.exports = router;

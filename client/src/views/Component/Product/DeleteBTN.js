@@ -10,7 +10,7 @@ class  DeleteBTN extends Component {
 
 handleDeleteProduct(id) {
     axios
-        .delete(`/api/deleteListing/${id}`)
+        .delete(`/api/product/${id}`)
 }
         render(){
         return(

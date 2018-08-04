@@ -1,9 +1,8 @@
+// ALL END POINTS IN THIS FOLDER ARE PREPENDED WITH  /api/categorys
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys');
-const passport = require('passport');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
 //Load product model
 const Category = require('../../models/category');
@@ -26,7 +25,8 @@ router.get('/',(req,res,next) => {
 
 
 //post
-router.post('/', (req, res, next) => {
+router.post('/', passport.authenticate('jwt', {session: false}),
+ (req, res, next) => {
       const category = new Category({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
@@ -69,7 +69,8 @@ router.get('/:CatId', (req, res, next) => {
     })
 
 //Edit
-router.patch("/:catId", (req, res, next) => {
+router.patch("/:catId",passport.authenticate('jwt', {session: false}),
+ (req, res, next) => {
     const id = req.params.catId;
     const updateOps = {};
     for (const ops of req.body) {
@@ -90,7 +91,8 @@ router.patch("/:catId", (req, res, next) => {
   });
 
 //Delete
-router.delete('/:CatId', (req, res, next) => {
+router.delete('/:CatId',passport.authenticate('jwt', {session: false}),
+ (req, res, next) => {
     const id = req.params.CatId;
     Category.remove({ _id: id })
         .exec()

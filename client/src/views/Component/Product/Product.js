@@ -13,14 +13,14 @@ const Product = (props) => {
         <CardBody>
           <CardTitle> {props.name}</CardTitle>
           <CardSubtitle> {props.price} </CardSubtitle>
-          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+          <CardText>{props.description}</CardText>
           <ButtonToolbar>
             <ButtonGroup>
               <Button size="sm" outline color="success">Add to Cart</Button>
             </ButtonGroup>
             <ButtonGroup>
               <DeleteBTN
-              // id={props.categoryId}
+              id={props.id}
               />
             </ButtonGroup> 
             </ButtonToolbar>  

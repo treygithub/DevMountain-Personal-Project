@@ -1,3 +1,4 @@
+// ALL END POINTS IN THIS FOLDER ARE PREPENDED WITH  /api/products
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
@@ -25,7 +26,7 @@ router.get('/',(req,res,next) => {
 });
 
 //post
-router.post('/', (req, res, next) => {
+router.post('/', passport.authenticate('jwt', {session: false}), (req, res, next) => {
       const product = new Product({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
@@ -36,7 +37,7 @@ router.post('/', (req, res, next) => {
     product
       .save()
       .then(result => {
-        console.log(result);
+        console.log([result]);
         res.status(201).json({
           message: "Handling POST requests to /products",
           createdProduct: result
@@ -70,7 +71,7 @@ router.get('/:productId', (req, res, next) => {
     })
 
 //Edit
-router.patch("/:productId", (req, res, next) => {
+router.patch("/:productId", passport.authenticate('jwt', {session: false}), (req, res, next) => {
     const id = req.params.productId;
     const updateOps = {};
     for (const ops of req.body) {
@@ -79,7 +80,7 @@ router.patch("/:productId", (req, res, next) => {
     Product.update({ _id: id }, { $set: updateOps })
       .exec()
       .then(result => {
-        console.log(result);
+        // console.log(result);
         res.status(200).json(result);
       })
       .catch(err => {
@@ -91,7 +92,7 @@ router.patch("/:productId", (req, res, next) => {
   });
 
 //Delete
-router.delete('/:productId', (req, res, next) => {
+router.delete('/:productId',passport.authenticate('jwt', {session: false}), (req, res, next) => {
     const id = req.params.productId;
     Product.remove({ _id: id })
         .exec()
