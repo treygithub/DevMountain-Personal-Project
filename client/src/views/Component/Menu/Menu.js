@@ -44,8 +44,8 @@ class Menu extends Component {
             name={e.name}
             price={e.price}
             description={e.description}
-            catId={e.catId}
-            img={e.img}
+            catId={e.categoryId}
+            img={e.productImage}
             id={e._id}
             />  
             </Col>

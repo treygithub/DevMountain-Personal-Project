@@ -91,7 +91,7 @@ router.post('/login',(req,res) => {
                         });
                 });
             }else {
-                errors.password = "password incorrect";
+                errors.password = "Auth Failed";
                 return res.status(400).json(errors);
             }
         });

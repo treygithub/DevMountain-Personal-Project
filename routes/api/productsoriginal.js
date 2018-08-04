@@ -1,8 +1,6 @@
 // ALL END POINTS IN THIS FOLDER ARE PREPENDED WITH  /api/products
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
-const keys = require('../../config/keys');
 const passport = require('passport');
 const mongoose = require('mongoose');
 
@@ -14,7 +12,6 @@ router.get('/',(req,res,next) => {
     Product.find()
     .exec()
     .then(docs => {
-        console.log(docs);
         res.status(200).json(docs);
     })
     .catch(err => {

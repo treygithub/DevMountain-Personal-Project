@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Media } from 'reactstrap';
-import axios from 'axios'
+import axios from 'axios';
 
 class MenuForm extends Component {
   constructor(){
@@ -31,7 +31,7 @@ onSubmit1(e){
     productImage:this.state.productImage
   }
   axios.post('/api/products/',(newPost))
-    .then(res => console.log(res.data))
+    .then(res => console.log('It worked',res.data))
     .catch(err => console.log(err.response.data))
   }  
 
@@ -94,7 +94,8 @@ onSubmit1(e){
             onChange={this.onChange1}
             type="file" 
             name="productImage" 
-            id="exampleFile" 
+            id="File" 
+            className="File"
             />
           <FormText color="muted">
             Picture and Description fields are optional, however every item must have a name, price and Category.

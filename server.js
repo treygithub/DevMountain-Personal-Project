@@ -2,16 +2,23 @@ const express = require('express');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const path = require('path');
+const crypto = require('crypto');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+const methodOverride = require('method-override');
 
-//Controllers in routes folder
-const order = require('./routes/api/orders');
+//Controllers in routes folder / RELATIVE PATH
+const orders = require('./routes/api/orders');
 const admins = require('./routes/api/admin');
-const products= require('./routes/api/products');
-const categorys= require('./routes/api/categorys');
+const products = require('./routes/api/product');
+const categorys = require('./routes/api/categorys');
 
 const app = express();
 
 // Body parser middleware
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -31,9 +38,9 @@ app.use(passport.initialize());
 // Passport Config
 require('./config/passport')(passport);
 
-// Use Routes
-app.use("/api/order", order);
+// Use Routes HTTP req
 app.use('/api/admin', admins);
+app.use('/api/order', orders);
 app.use('/api/product', products);
 app.use('/api/category', categorys);
 
