@@ -16,7 +16,7 @@ const Admin = require('../../models/Admin');
 //@route post api/users/register
 //@desc  register users route
 //access Public
-router.post('/register', passport.authenticate('jwt', {session: false}), (req, res) => {
+router.post('/register',  (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
     //check validation
@@ -29,7 +29,7 @@ router.post('/register', passport.authenticate('jwt', {session: false}), (req, r
     .then(admin => {
         if(admin){
             errors.email = 'Email already exists';
-            return res.status(400).json(errors);
+            return res.status(400).json(errors.email);
         } else {
             const newAdmin = new Admin({
                 name:req.body.name,

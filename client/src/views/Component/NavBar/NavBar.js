@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Button } from 'reactstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './NavBar.css';
 
 export default class NavBar extends Component {
@@ -31,19 +31,19 @@ export default class NavBar extends Component {
               <Collapse isOpen={!this.state.collapsed} navbar>
                 <Nav navbar>
                   <NavItem>
-                    <NavLink tag={Link} to='/'>Home</NavLink>
+                    <NavLink  to='/'>Home</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink tag={Link} to='/Menu'>Menu</NavLink>
+                    <NavLink  to='/Menu'>Menu</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink tag={Link} to='/About'>About</NavLink>
+                    <NavLink  to='/About'>About</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink tag={Link} to='/Features'>Features</NavLink>
+                    <NavLink  to='/Features'>Features</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink tag={Link} to='/Login'>Login</NavLink>
+                    <NavLink to='/Login'>Login</NavLink>
                   </NavItem>
                  </Nav>
               </Collapse>

@@ -22,9 +22,9 @@ class DashBoard extends Component {
           
           <div className="btn-group mb-4" role="group">
             <Link to="/EditWebsite" className="btn btn-light">
-            <i class="fa fa-desktop" aria-hidden="true"></i> Edit Website</Link>
+            <i className="fa fa-desktop" aria-hidden="true"></i> Edit Website</Link>
             <Link to="/EditMenu" className="btn btn-light">
-            <i class="fa fa-beer" aria-hidden="true"></i> Edit Menu
+            <i className="fa fa-beer" aria-hidden="true"></i> Edit Menu
               </Link>
             <Link to="Register" className="btn btn-light">
             <i className="fas fa-user-circle text-info mr-1"></i>

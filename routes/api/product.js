@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
   }
 });
 
-//Multer Img Filter
+  //Multer Img Filter
 const fileFilter = (req, file, cb) => {
   // reject a file
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
