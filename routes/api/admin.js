@@ -122,16 +122,17 @@ Admin.remove({_id: req.params.adminid})
 // @route   GET api/users/current
 // @desc    Return current user
 // @access  Private
-router.get(
-    '/current',
-    passport.authenticate('jwt', { session: false }),
-    (req, res) => {
-      res.json({
-        id: req.user.id,
-        name: req.user.name,
-        email: req.user.email
+router.get("/current", (req, res, next) => {
+    Product.find()
+      .then(docs => {
+        res.status(200).json(docs)
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({
+          error: err
+        });
       });
-    }
-  );
+  });
   
   module.exports = router;

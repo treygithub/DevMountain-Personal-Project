@@ -8,7 +8,7 @@ import { GET_ERRORS } from './types';
 
 export const registerAdmin = (newAdmin, history) => dispatch => {
     axios.post('/api/admin/register',(newAdmin))
-    .then(res => history.push('./Dashboard'))
+    .then(res => history.push('/DashBoard'))
     .catch(err => 
         dispatch({
             type: GET_ERRORS,
@@ -17,8 +17,8 @@ export const registerAdmin = (newAdmin, history) => dispatch => {
     );
 };
 
-export const loginAdmin = adminData => dispatch =>{
-    axios.post('./api/admin/login', (adminData))
+export const loginAdmin = (adminData) => dispatch =>{
+    axios.post('/api/admin/login', (adminData))
     .then(res => {
         //save to your local storage
         const { token } = res.data;

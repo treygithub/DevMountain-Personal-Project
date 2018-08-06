@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 
+
 //This file adds the auth token to every req. if admin is logged in.
 
 const setAuthToken = token => {

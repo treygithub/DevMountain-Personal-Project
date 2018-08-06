@@ -24,7 +24,7 @@ export default class NavBar extends Component {
     return (
       <div>
         
-        <Navbar className="navbar fixedTop" color="faded" light >
+        <Navbar style={{zIndex:"9999"}} className="navbar fixedTop" color="faded" light >
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <NavbarBrand  className="align-center">Buttler Brothers</NavbarBrand>  
               <NavbarBrand href="/" className="align-right"><Button outline color="secondary">Make Reservations</Button></NavbarBrand>          

@@ -3,13 +3,10 @@ import { Button, Form, FormGroup, Label, Input, FormText, Media } from 'reactstr
 import { connect } from 'react-redux';
 // import { postNewProduct } from '../../../../ducks/actions/productActions';
 import { addProduct } from "../../../../ducks/reducers/newProductReducer"
-import PropTypes from 'prop-types';
 import  { withRouter } from 'react-router-dom';
 import moment from 'moment';
 import Dropzone from 'react-dropzone'
 import axios from 'axios';
-
-
 
 class MenuForm extends Component {
   constructor(props){
@@ -41,8 +38,7 @@ addProduct = async(e) => {
   data.append('description', description);
   data.append('categoryId', categoryId);
   data.append('productImage', productImage);
-
-  console.log("i posted")
+  // console.log("i posted")
   const response = await axios.post("/api/product", data)
  
 }

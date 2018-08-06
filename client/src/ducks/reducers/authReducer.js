@@ -1,9 +1,11 @@
-import { SET_CURRENT_ADMIN }  from '../actions/types';
 import isEmpty from '../../validation/isEmpty';
+import { SET_CURRENT_ADMIN }  from '../actions/types';
+
 
 const initialState = {
     isAuthenticated: false,
-    admin:{}
+    admin:{},
+    test:''
 }
 
 export default function(state = initialState, action) {
