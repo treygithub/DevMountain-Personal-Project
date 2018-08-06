@@ -1,25 +1,33 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import classnames from 'classnames';
+import { connect } from 'react-redux';
+import { registerAdmin} from '../../ducks/actions/authActions';
+import PropTypes from 'prop-types';
+import  { withRouter } from 'react-router-dom';
 
 class Register extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state={
       name:'',
       email:'',
       password:'',
       password2:'',
-      errors:{}
+      errors:''
     }
     this.onChange=this.onChange.bind(this);
     this.onSubmit=this.onSubmit.bind(this);
   }
 
+  componentWillReceiveProps(nextProps){
+      if(nextProps.errors){
+        this.setState({errors: nextProps.errors})
+      }
+  }
+// Awesome onChange handler
   onChange(e){
     this.setState({[e.target.name]: e.target.value});
   }
-
   onSubmit(e){
     e.preventDefault();
     const newAdmin = {
@@ -27,11 +35,9 @@ class Register extends Component {
       email:this.state.email,
       password:this.state.password,
       password2:this.state.password2
-    }
-    axios.post('/api/admin/register',(newAdmin))
-      .then(res => console.log(res.data))
-      .catch(err => this.setState({errors: err.response.data}))
-    }  
+    };
+    this.props.registerAdmin(newAdmin, this.props.history);
+ }  
 
   render(){ 
     const { errors } = this.state;
@@ -42,10 +48,10 @@ class Register extends Component {
     <div className="container">
       <div className="row">
         <div className="col-md-8 m-auto">
-          <h1 className="display-4 text-center">Sign Up</h1>
-          <p className="lead text-center">Create your DevConnector account</p>
+          <h1 className="display-4 text-center" id="target">Register</h1>
+          <p className="lead text-center">Create a new Administrator account</p>
 
-          <form noValidate onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <input 
                 type="text" 
@@ -106,4 +112,15 @@ class Register extends Component {
   )
 }
 }
-export default Register;
+
+Register.propTypes ={
+  registerAdmin: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors
+});
+export default connect(mapStateToProps, {registerAdmin})(withRouter(Register));

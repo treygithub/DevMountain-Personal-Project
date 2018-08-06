@@ -5,7 +5,7 @@ import './Menu.css';
 import {Col, Container, Row} from 'reactstrap';
 
 
-class Menu extends Component {
+class AdminMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +36,6 @@ class Menu extends Component {
     //map over state and pass props to child
     render() {
       let {items} = this.state
-      console.log(items)
       let instanceLoop  = items.map((e,i) => {
         return (
           <Col sm="4">
@@ -64,4 +63,4 @@ class Menu extends Component {
     }
 }
 
-export default Menu;
+export default AdminMenu;

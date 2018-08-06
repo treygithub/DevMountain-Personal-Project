@@ -13,6 +13,10 @@ const validateLoginInput = require('../../validation/login');
 //Load user model
 const Admin = require('../../models/Admin');
 
+
+// passport.authenticate('jwt', {session: false}),
+
+
 //@route post api/users/register
 //@desc  register users route
 //access Public

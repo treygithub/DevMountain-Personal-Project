@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
   }
 });
 
-  //Multer Img Filter
+  //Multer Img mime type Filter
 const fileFilter = (req, file, cb) => {
   // reject a file
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
@@ -29,7 +29,7 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-//Multer middleWear
+//Multer middleWear filter size
 const upload = multer({
   storage: storage,
   limits: {
@@ -54,17 +54,19 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", upload.single('productImage'), (req, res, next) => {
+  console.log(req.body)
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
-    price: req.body.price,
-    description: req.body.description,
-    categoryId: req.body.categoryId,
-    productImage: req.file.path 
+    price: parseInt(req.body.price),
+    description: req.body.desc,
+    categoryId: parseInt(req.body.catId),
+    productImage: req.file.path
   });
   product
     .save()
     .then(result => {
+      console.log(result)
       res.status(201).json(result);
     })
     .catch(err => {

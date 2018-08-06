@@ -1,43 +1,40 @@
 import React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Media } from 'reactstrap';
-import axios from 'axios';
+import { connect } from 'react-redux';
+// import { postNewProduct } from '../../../../ducks/actions/productActions';
+import { addProduct } from "../../../../ducks/reducers/newProductReducer"
+import PropTypes from 'prop-types';
+import  { withRouter } from 'react-router-dom';
 
 class MenuForm extends Component {
-  constructor(){
-    super();
-    this.setState={
+  constructor(props){
+    super(props);
+    this.state={
       name:'',
       price:'',
       description:'',
       categoryId:'',
-      productImage:''
-
+      productImage:'',
+      errors:''
     }
     this.onChange1=this.onChange1.bind(this);
-    this.onSubmit1=this.onSubmit1.bind(this);
+    this.addProduct=this.addProduct.bind(this);
 }
 
 onChange1(e){
   this.setState({[e.target.name]: e.target.value});
 }
 
-onSubmit1(e){
-  e.preventDefault();
-  const newPost = {
-    name: this.state.name,
-    price:this.state.price,
-    description:this.state.description,
-    categoryId:this.state.categoryId,
-    productImage:this.state.productImage
-  }
-  axios.post('/api/products/',(newPost))
-    .then(res => console.log('It worked',res.data))
-    .catch(err => console.log(err.response.data))
-  }  
+addProduct(){
+  let { name, price, description, categoryId, productImage} = this.state;
+  this.props.addProduct( name, price, description, categoryId, productImage, this.props.history);
+}  
 
   render() {
+    console.log(this.state)
+    console.log(this.props)
     return (
-      <Form onSubmit={this.onSubmit} action="/public/uploads" method="POST" className="container" encType="multipart/form-data" style={{width:600}}>
+      <Form onSubmit={this.addProduct} className="container" style={{maxWidth:600}}>
         <FormGroup>
           <Media body align="middle">Create a new Menu item</Media>
           <Label for="itemName">Item Name</Label>
@@ -102,10 +99,13 @@ onSubmit1(e){
           </FormText>
         </FormGroup>
      
-        <Button>Submit</Button>
+        <Button type="submit">Submit</Button>
       </Form>
     );
   }
 }
 
-export default MenuForm;
+
+const mapStateToProps = (state) => state;
+
+export default connect(mapStateToProps, { addProduct })(withRouter(MenuForm));

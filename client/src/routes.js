@@ -5,7 +5,7 @@ import Menu from './views/Component/Menu/Menu';
 import About from './views/Component/About/About';
 import Features from './views/Component/Features/Features';
 import Register from './views/auth/register';
-// import Admin from './admin/admin';
+import AdminMenu from './views/Component/Menu/AdminMenu';
 import Login from './views/auth/login';
 import DashBoard from './views/Component/Dashboard/Dashboard';
 import EditWebsite from './views/Component/Dashboard/EditWebsite/EditWebsite';
@@ -15,7 +15,8 @@ const Router2 = () =>  (
       
         <Switch>
           <Route exact path='/' component={ Home }/>
-          <Route path='/Menu' component={ Menu }/> 
+          <Route path='/Menu' component={ Menu }/>
+          <Route path='/AdminMenu' component={ AdminMenu }/>
           <Route path='/About' component={ About }/>
           <Route path='/Features' component={ Features }/>
           <Route path='/Register' component={ Register }/>
