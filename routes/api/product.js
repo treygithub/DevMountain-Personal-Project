@@ -55,12 +55,13 @@ router.get("/", (req, res, next) => {
 
 router.post("/", upload.single('productImage'), (req, res, next) => {
   console.log(req.body)
+  console.log("hit")
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
     price: parseInt(req.body.price),
     description: req.body.desc,
-    categoryId: parseInt(req.body.catId),
+    categoryId: /*parseInt(req.body.catId)*/6,
     productImage: req.file.path
   });
   product

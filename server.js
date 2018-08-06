@@ -8,6 +8,9 @@ const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
 const Grid = require('gridfs-stream');
 const methodOverride = require('method-override');
+const router = express.Router();
+const cors = require('cors')
+
 
 //Controllers in routes folder / RELATIVE PATH
 const orders = require('./routes/api/orders');
@@ -16,6 +19,8 @@ const products = require('./routes/api/product');
 const categorys = require('./routes/api/categorys');
 
 const app = express();
+
+app.use(cors())
 
 // Body parser middleware
 app.use('/uploads', express.static('uploads'));
@@ -42,6 +47,8 @@ require('./config/passport')(passport);
 app.use('/api/admin', admins);
 app.use('/api/order', orders);
 app.use('/api/product', products);
+
+
 app.use('/api/category', categorys);
 
 //My Error Message .Catch all

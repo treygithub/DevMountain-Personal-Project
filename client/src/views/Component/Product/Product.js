@@ -6,13 +6,14 @@ import './product.css'
 
 
 const Product = (props) => {
+  console.log("src",props.img)
   return (
     <div>
       <Card className="deck">
         <CardImg top src={props.img} width="100%"  alt="Card image cap" />
         <CardBody>
           <CardTitle> {props.name}</CardTitle>
-          <CardSubtitle> {props.price} </CardSubtitle>
+          <CardSubtitle> {props.price}</CardSubtitle>
           <CardText>{props.description}</CardText>
           <ButtonToolbar>
             <ButtonGroup>
