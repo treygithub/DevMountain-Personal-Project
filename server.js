@@ -3,15 +3,14 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const router = express.Router();
-const cors = require('cors')
-
-
 //Controllers in routes folder / RELATIVE PATH
 const orders = require('./routes/api/orders');
 const admins = require('./routes/api/admin');
 const products = require('./routes/api/product');
 const categorys = require('./routes/api/categorys');
+
+const router = express.Router();
+const cors = require('cors')
 
 const app = express();
 

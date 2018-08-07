@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
-import DeleteBTN from '../Product/DeleteBTN'
+import DeleteAdminBTN from './EditAdmin/DeleteAdminBTN'
 
 
 class DashBoard extends Component {
@@ -38,7 +38,7 @@ return(
             <th scope="row"></th>
             <td>name={e.name}</td>
             <td>email={e.email}</td>
-            <td> <DeleteBTN /> </td>
+            <td> <DeleteAdminBTN id={e._id} /> </td>
           </tr>
         </tbody>
     </Table>

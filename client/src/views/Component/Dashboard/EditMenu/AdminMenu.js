@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import Product from '../Product/Product';
+import Product from './AdminProduct';
 import axios from 'axios';
-import './Menu.css';
 import {Col, Container, Row} from 'reactstrap';
 
 
@@ -58,6 +57,7 @@ class AdminMenu extends Component {
                 <Row className="products">
                 {instanceLoop}
                 </Row>
+                <p>THIS IS FROM ADMIN MENU</p>
             </Container>
         </div>)
     }

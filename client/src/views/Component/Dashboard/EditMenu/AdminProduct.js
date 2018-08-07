@@ -1,11 +1,10 @@
 import React from 'react';
-import DeleteBTN from './DeleteBTN';
+import DeleteProductBTN from './DeleteProductsBTN'
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button, ButtonGroup, ButtonToolbar } from 'reactstrap';
-import './product.css'
 
 
-const Product = (props) => {
+const AdminProduct = (props) => {
   console.log("src",props.img)
   return (
     <div>
@@ -20,7 +19,7 @@ const Product = (props) => {
               <Button size="sm" outline color="success">Add to Cart</Button>
             </ButtonGroup>
             <ButtonGroup>
-              <DeleteBTN
+              <DeleteProductBTN
               id={props.id}
               />
             </ButtonGroup> 
@@ -31,4 +30,4 @@ const Product = (props) => {
   );
 };
 
-export default Product;
+export default AdminProduct;

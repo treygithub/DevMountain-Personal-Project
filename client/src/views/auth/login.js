@@ -18,18 +18,18 @@ class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   componentDidMount() {
-    if (this.props.auth.isAdmin) {
-      window.location.href = "http://localhost:3000/#/dashboard"
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
     }
   }
 
-  componentWillReceiveProps(nextProps){
-    if(this.nextProps.auth.isAdmin){
-      window.location.href = "http://localhost:3000/#/dashboard"
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push('/dashboard');
     }
 
-    if(nextProps.errors){
-      this.setState({errors: nextProps.errors})
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
     }
   }
 
@@ -40,7 +40,7 @@ class Login extends Component {
 
   onSubmit(e){
     e.preventDefault();
-
+    console.log(this.props)
     const adminData ={
       email:this.state.email,
       password: this.state.password
@@ -56,7 +56,7 @@ class Login extends Component {
 
 <Container className="skoal" fluid>
     <Form onSubmit={this.onSubmit}>
-        <h1 className="display-4 text-center">Sing In</h1>
+        <h1 className="display-4 text-center">Sign In</h1>
         <p className="lead text-center">Log into your Administration account</p>
         <Media middle>
           <FormGroup >
@@ -155,7 +155,7 @@ Login.propTypes = {
 }
 
 //State to be updated
-const mapStateToProps = (state) =>({
+const mapStateToProps = state =>({
   auth: state.auth,
   errors: state.errors
 })

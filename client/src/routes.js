@@ -5,7 +5,7 @@ import Menu from './views/Component/Menu/Menu';
 import About from './views/Component/About/About';
 import Features from './views/Component/Features/Features';
 import Register from './views/auth/register';
-import AdminMenu from './views/Component/Menu/AdminMenu';
+import AdminMenu from './views/Component/Dashboard/EditMenu/AdminMenu';
 import Login from './views/auth/login';
 import DashBoard from './views/Component/Dashboard/Dashboard';
 import EditWebsite from './views/Component/Dashboard/EditWebsite/EditWebsite';

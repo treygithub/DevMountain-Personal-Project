@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import { Button } from 'reactstrap';
 
-class  DeleteBTN extends Component {
+class  DeleteProductBTN extends Component {
     constructor(props){
         super(props);
         this.handleDeleteProduct = this.handleDeleteProduct.bind(this)
@@ -10,7 +10,7 @@ class  DeleteBTN extends Component {
 
 handleDeleteProduct(id) {
     axios
-        .delete(`/api/product/${id}`)
+        .delete(`/api/product/delete/${id}`)
 }
         render(){
         return(
@@ -19,5 +19,4 @@ handleDeleteProduct(id) {
             </div>)
 }
 }
-export default DeleteBTN;
-
+export default DeleteProductBTN;

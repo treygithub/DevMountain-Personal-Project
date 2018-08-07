@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Product from '../Product/Product';
+import Product from './Product/Product';
 import axios from 'axios';
 import './Menu.css';
 import {Col, Container, Row} from 'reactstrap';

@@ -72,7 +72,7 @@ router.post('/login',(req,res) => {
     .then(admin => {
         //check for user
         if(!admin) {
-            errors.email = 'Auth failed';
+            errors.email = 'Emailed Auth failed';
             return res.status(404).json(errors);
         }
         //check password
@@ -95,7 +95,7 @@ router.post('/login',(req,res) => {
                         });
                 });
             }else {
-                errors.password = "Auth Failed";
+                errors.password = "Auth Password Failed";
                 return res.status(400).json(errors);
             }
         });

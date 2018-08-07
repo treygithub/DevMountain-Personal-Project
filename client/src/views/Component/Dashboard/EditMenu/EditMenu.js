@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import MenuForm from './MenuForm'
+import AdminMenu from './AdminMenu';
 
 
 class EditMenu extends Component {
@@ -7,6 +8,7 @@ class EditMenu extends Component {
     return (
       <div>Edit table page
         <MenuForm/>
+        <AdminMenu/>
       </div>
     )
   }

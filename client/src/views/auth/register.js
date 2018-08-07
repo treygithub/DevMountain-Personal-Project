@@ -42,8 +42,11 @@ class Register extends Component {
   render(){ 
     const { errors } = this.state;
 
+    const { admin } = this.props.auth
+
   return (
     <div>
+      {admin ? admin.name : null}
       <div className="register">
     <div className="container">
       <div className="row">

@@ -19,4 +19,4 @@ handleDeleteAdmin(id) {
             </div>)
 }
 }
-export default DeleteBTN;
+export default DeleteAdminBTN;

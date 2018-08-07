@@ -12,8 +12,7 @@ const initialState = {
       case SET_CURRENT_ADMIN:
         return {
           ...state,
-          isAuthenticated: !isEmpty(action.payload),
-          isAdmin: true
+          isAuthenticated: !isEmpty(action.payload)
         };
       default:
         return state;
