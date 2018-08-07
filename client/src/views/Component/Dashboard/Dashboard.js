@@ -28,7 +28,7 @@ getCurrentAdmin(){
 }
 
 render(){
-  let {admin, name, email} = this.state
+  let {admin} = this.state
 console.log(this.state)
  let instanceLooper  = admin.map((e,i) => {
 return(
@@ -38,7 +38,10 @@ return(
             <th scope="row"></th>
             <td>name={e.name}</td>
             <td>email={e.email}</td>
-            <td> <DeleteAdminBTN id={e._id} /> </td>
+            <td> 
+              <DeleteAdminBTN id={e._id} getCurrentAdmin={this.getCurrentAdmin}
+              /> 
+              </td>
           </tr>
         </tbody>
     </Table>

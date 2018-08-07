@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Product from './AdminProduct';
+import AdminProduct from './AdminProduct';
 import axios from 'axios';
 import {Col, Container, Row} from 'reactstrap';
 
@@ -38,7 +38,7 @@ class AdminMenu extends Component {
       let instanceLoop  = items.map((e,i) => {
         return (
           <Col sm="4">
-          <Product 
+          <AdminProduct 
             key={i}
             name={e.name}
             price={e.price}
@@ -46,6 +46,7 @@ class AdminMenu extends Component {
             catId={e.categoryId}
             img={e.productImage}
             id={e._id}
+            getProducts={this.getProducts}
             />  
             </Col>
          )})

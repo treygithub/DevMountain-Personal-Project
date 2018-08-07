@@ -8,10 +8,13 @@ class  DeleteAdminBTN extends Component {
         this.handleDeleteAdmin = this.handleDeleteAdmin.bind(this)
     }
 
-handleDeleteAdmin(id) {
-    axios
-        .delete(`/api/admin/delete/${id}`)
-}
+handleDeleteAdmin(id){
+    axios.delete(`/api/admin/delete/${id}`)
+    .then(() => this.props.getCurrentAdmin())
+    .catch(err => console.log(err))
+    }
+
+
         render(){
         return(
             <div>

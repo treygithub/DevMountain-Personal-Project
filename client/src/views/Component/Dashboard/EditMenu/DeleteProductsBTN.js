@@ -9,10 +9,13 @@ class  DeleteProductBTN extends Component {
     }
 
 handleDeleteProduct(id) {
-    axios
-        .delete(`/api/product/delete/${id}`)
+    console.log(id)
+    axios.delete(`/api/product/${id}`)
+    .then(() => this.props.getProducts())
+    .catch(err => console.log(err))
 }
         render(){
+            console.log(this.props)
         return(
             <div>
                 <Button outline color="danger"  onClick={ () =>this.handleDeleteProduct(this.props.id)}>Delete</Button>

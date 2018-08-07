@@ -5,7 +5,7 @@ import { Card, CardImg, CardText, CardBody,
 
 
 const AdminProduct = (props) => {
-  console.log("src",props.img)
+  console.log("src",props)
   return (
     <div>
       <Card className="deck">
@@ -21,6 +21,7 @@ const AdminProduct = (props) => {
             <ButtonGroup>
               <DeleteProductBTN
               id={props.id}
+              getProducts={props.getProducts}
               />
             </ButtonGroup> 
             </ButtonToolbar>  

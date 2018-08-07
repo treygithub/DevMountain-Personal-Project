@@ -13,9 +13,7 @@ const validateLoginInput = require('../../validation/login');
 //Load user model
 const Admin = require('../../models/Admin');
 
-
 // passport.authenticate('jwt', {session: false}),
-
 
 //@route post api/users/register
 //@desc  register users route
@@ -105,9 +103,11 @@ router.post('/login',(req,res) => {
 //@route Delete api/admin/current
 //@desc  Delete admin
 //@access Private
-router.delete('/:adminid',passport.authenticate('jwt', {session: false}),
+router.delete('/delete/:id',
  (req, res, next ) => {
-Admin.remove({_id: req.params.adminid})
+
+    console.log(req.params)
+Admin.remove({_id: req.params.id})
 .then(result => {
     res.status(200).json({
         message: 'Admin deleted'
