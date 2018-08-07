@@ -119,12 +119,15 @@ Admin.remove({_id: req.params.adminid})
     });
   });
 });
+
+
 // @route   GET api/users/current
 // @desc    Return current user
 // @access  Private
 router.get("/current", (req, res, next) => {
-    Product.find()
+    Admin.find()
       .then(docs => {
+          console.log(docs)
         res.status(200).json(docs)
       })
       .catch(err => {

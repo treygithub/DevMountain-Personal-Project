@@ -2,8 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const multer = require('multer');
-const passport = require('passport');
-const path = require('path');
+
 
 //Load product model
 const Product = require('../../models/product');
