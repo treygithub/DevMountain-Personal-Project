@@ -3,9 +3,7 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button, ButtonGroup, ButtonToolbar } from 'reactstrap';
 import './product.css'
 
-
 const Product = (props) => {
-  console.log("src",props.img)
   return (
     <div>
       <Card className="deck">

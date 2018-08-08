@@ -13,12 +13,10 @@ const validateLoginInput = require('../../validation/login');
 //Load user model
 const Admin = require('../../models/Admin');
 
-// passport.authenticate('jwt', {session: false}),
-
 //@route post api/users/register
 //@desc  register users route
 //access Public
-router.post('/register',  (req, res) => {
+router.post('/register',passport.authenticate('jwt', {session: false}),  (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
     //check validation
@@ -103,7 +101,7 @@ router.post('/login',(req,res) => {
 //@route Delete api/admin/current
 //@desc  Delete admin
 //@access Private
-router.delete('/delete/:id',
+router.delete('/delete/:id',passport.authenticate('jwt', {session: false}),
  (req, res, next ) => {
 
     console.log(req.params)

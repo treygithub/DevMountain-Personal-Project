@@ -18,7 +18,7 @@ class Register extends Component {
     this.onChange=this.onChange.bind(this);
     this.onSubmit=this.onSubmit.bind(this);
   }
-
+//change to new version if you get the chance
   componentWillReceiveProps(nextProps){
       if(nextProps.errors){
         this.setState({errors: nextProps.errors})
@@ -115,7 +115,7 @@ class Register extends Component {
   )
 }
 }
-
+//Rudex stuff
 Register.propTypes ={
   registerAdmin: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,

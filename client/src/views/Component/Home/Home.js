@@ -20,6 +20,15 @@ class Home extends Component {
         wow.init();
       }
 
+// getCurrentEvents(){
+//     axios.get('/api/events')
+//     .then(res => {
+//         this.setState({
+//             events: data.events
+//         })
+//     })
+// }
+
       
       render(){
     return(
@@ -44,8 +53,8 @@ class Home extends Component {
                         </Media>
                     </Col>
                      <Col >   
-                        <Media  >
-                            <img style={{ width:'100%',height:'100vh '}} src={burger} alt="Food" />
+                        <Media>
+                            <img className=" img-fluid" style={{ width:'100%',height:'100vh '}} src={burger} alt="Food" />
                         </Media>
                      </Col> 
                 </Row>
@@ -56,7 +65,7 @@ class Home extends Component {
                         <Col  >
                         
                             <Media >
-                                <img style={{ width:'100%',height:'100vh '}} src={burger} alt="Food" />
+                                <img style={{ width:'100%',height:'100vh'}} src={burger} alt="Food" />
                             </Media>
                         </Col>
                         <Col  >   
