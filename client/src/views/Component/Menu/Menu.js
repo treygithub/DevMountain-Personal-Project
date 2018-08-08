@@ -9,13 +9,7 @@ class Menu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items:[],
-      name: '',
-      price:'',
-      description:'',
-      catId:'',
-      img:'',
-      id:''
+      items:[]
     }
    
     this.getProducts = this.getProducts.bind(this)
@@ -42,6 +36,7 @@ class Menu extends Component {
           <Col sm="4">
           <Product 
             key={i}
+            i={i}
             name={e.name}
             price={e.price}
             description={e.description}
@@ -65,3 +60,20 @@ class Menu extends Component {
 }
 
 export default Menu;
+
+// //All properties in Component
+// Login.propTypes = {
+//   loginAdmin: PropTypes.func.isRequired,
+//   auth: PropTypes.object.isRequired,
+//   errors: PropTypes.object.isRequired
+// }
+
+// //State to be updated
+// const mapStateToProps = state =>({
+//   auth: state.auth,
+//   errors: state.errors,
+//   products:state.cart
+// })
+
+// export default connect(mapStateToProps,{ Menu })(Login);
+

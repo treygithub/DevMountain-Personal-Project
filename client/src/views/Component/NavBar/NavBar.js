@@ -45,6 +45,9 @@ export default class NavBar extends Component {
                   <NavItem>
                     <NavLink to='/Login'>Login</NavLink>
                   </NavItem>
+                  <NavItem>
+                    <NavLink to='/Cart'>Cart</NavLink>
+                  </NavItem>
                  </Nav>
               </Collapse>
         </Navbar>

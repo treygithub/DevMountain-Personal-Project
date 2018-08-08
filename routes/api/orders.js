@@ -9,19 +9,19 @@ const Order = require("../../models/order");
 const Product = require("../../models/product");
 
 // GET REQ
-router.get("/",passport.authenticate('jwt', {session: false}), 
+router.get("/", 
 (req, res, next) => {
   Order.find()
-    .select("product quantity _id")
-    .exec()
+    // .select("product quantity _id")
+    // .exec()
     .then(docs => {
       res.status(200).json({
         count: docs.length,
         orders: docs.map(doc => {
           return {
             _id: doc._id,
-            product: doc.product,
-            quantity: doc.quantity
+            quantity: doc.cart[0].quantity,
+            productId: doc.cart[0].product
           };
         })
       });
@@ -32,32 +32,35 @@ router.get("/",passport.authenticate('jwt', {session: false}),
       });
     });
 });
+
 //POST
-router.post("/",passport.authenticate('jwt', {session: false}), 
+router.post("/:id", 
 (req, res, next) => {
-  Product.findById(req.body.productId)
-    .then(product => {
-      if (!product) {
-        return res.status(404).json({
-          message: "Product not found"
-        });
+  console.log(req.params.id, req.session)
+  // let {productId} = cart[0]
+  console.log('LINE 41',Order)
+  Order.find()
+    .then( order => {
+      console.log("Line 42", order)
+      console.log(order[0].cart)
+      let product = order.find(p =>{
+       console.log(p.cart[0].product, req.params.id) 
+       return `${p.cart[0].product}` === req.params.id;
+      })
+       if(product) {
+
+        console.log("FOUND PRODUCT", product);
       }
-      const order = new Order({
-        _id: mongoose.Types.ObjectId(),
-        quantity: req.body.quantity,
-        product: req.body.productId
-      });
-      return order.save();
-    })
-    .then(result => {
-      res.status(201).json({
-        message: "Order stored",
-        createdOrder: {
-          _id: result._id,
-          product: result.product,
-          quantity: result.quantity
-        }
-      });
+      if (!order) {
+        const order = new Order({
+          _id: mongoose.Types.ObjectId(),
+          userId: req.sessionID,
+          cart: [{quantity: req.body.quantity,
+            product: req.params.id}]
+        });
+        return order.save().then((order)=>{res.json(order)})
+      }
+      
     })
     .catch(err => {
       console.log(err);
@@ -66,6 +69,7 @@ router.post("/",passport.authenticate('jwt', {session: false}),
       });
     });
 });
+
 //GET PARAMS
 router.get("/:orId",passport.authenticate('jwt', {session: false}),
  (req, res, next) => {
@@ -87,6 +91,7 @@ router.get("/:orId",passport.authenticate('jwt', {session: false}),
       });
     });
 });
+
 //DELETE
 router.delete("/:orderId",passport.authenticate('jwt', {session: false}),
  (req, res, next) => {
