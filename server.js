@@ -65,7 +65,7 @@ app.use((error, req,res,next) => {
 // No clue what this is...
 app.use('/', express.static)
 app.get('*', (req, res)=>{
-  path.join(__dirname, '../build/index.html')
+  path.join(__dirname, '/client/build/index.html')
 })
 
 const port = process.env.PORT || 5000;
