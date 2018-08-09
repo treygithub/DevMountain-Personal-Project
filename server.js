@@ -2,24 +2,31 @@ const express = require('express');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+require ('dotenv').config();
 
 //Controllers in routes folder / RELATIVE PATH
 const orders = require('./routes/api/orders');
 const admins = require('./routes/api/admin');
 const products = require('./routes/api/product');
 const categorys = require('./routes/api/categorys');
-
+const session = require('express-session')
 const router = express.Router();
 const cors = require('cors')
+const path = require('path')
 
 const app = express();
-
+app.use(session({
+  resave: true,
+  saveUninitialized:true,
+  secret: process.env.CONNECTION_STRING
+}))
 app.use(cors())
 
 // Body parser middleware
 app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use( express.static( path.join(__dirname, '/../build') ) );
 
 // DB Config
 const db = require('./config/keys').mongoURI;
@@ -54,6 +61,12 @@ app.use((error, req,res,next) => {
   res.json({error:{
     message:error.message
   }})
+})
+
+// No clue what this is...
+app.use('/', express.static)
+app.get('*', (req, res)=>{
+  path.join(__dirname, '../build/index.html')
 })
 
 const port = process.env.PORT || 5000;

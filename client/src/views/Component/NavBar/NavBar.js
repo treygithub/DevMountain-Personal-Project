@@ -18,6 +18,7 @@ export default class NavBar extends Component {
       collapsed: !this.state.collapsed
     });
   }
+  
   render() {
     
       
