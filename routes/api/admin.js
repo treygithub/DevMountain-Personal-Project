@@ -122,7 +122,7 @@ Admin.remove({_id: req.params.id})
 // @route   GET api/users/current
 // @desc    Return current user
 // @access  Private
-router.get("/current", (req, res, next) => {
+router.get("/current", passport.authenticate('jwt', {session: false}), (req, res, next) => {
     Admin.find()
       .then(docs => {
           console.log(docs)

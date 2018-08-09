@@ -13,7 +13,6 @@ const session = require('express-session')
 const router = express.Router();
 const cors = require('cors')
 const path = require('path')
-console.log(process.env)
 const app = express();
 app.use(session({
   resave: true,
