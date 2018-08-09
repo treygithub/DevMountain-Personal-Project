@@ -13,12 +13,12 @@ const session = require('express-session')
 const router = express.Router();
 const cors = require('cors')
 const path = require('path')
-
+console.log(process.env)
 const app = express();
 app.use(session({
   resave: true,
   saveUninitialized:true,
-  secret: process.env.CONNECTION_STRING
+  secret: process.env.SECRET
 }))
 app.use(cors())
 
@@ -26,7 +26,7 @@ app.use(cors())
 app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use( express.static( path.join(__dirname, '/../build') ) );
+app.use( express.static( path.join(__dirname, '/client/build') ) );
 
 // DB Config
 const db = require('./config/keys').mongoURI;
