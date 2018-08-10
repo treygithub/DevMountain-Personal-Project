@@ -20,11 +20,11 @@ import { SliderPicker } from 'react-color'
      this.onChange3=this.onChange3.bind(this);
      this.patchReq=this.patchReq.bind(this);
    }
-   handleChange = (color, e) => {
+   onChangeComplete = (color, e) => {
     e.preventDefault();
     this.setState({ titleColor: color.hex });
   };
-  handleChange2 = (color, e) => {
+  onChangeComplete2 = (color, e) => {
     e.preventDefault();
     this.setState({ bodyColor: color.hex });
   };
@@ -93,8 +93,8 @@ onFileDrop = (file) => {
                 <Label for="titleColor">Font Color</Label>
                 <SliderPicker
                 name="titleColor"
-                value={ this.state.titleColor }
-                onChange={ this.handleChange }
+                color={ this.state.titleColor }
+                onChangeComplete={ this.onChangeComplete }
                 />
               </FormGroup>
             </Media>
@@ -122,8 +122,8 @@ onFileDrop = (file) => {
                 <Label for="Color-2">Font Color</Label>
                 <SliderPicker
                 name="bodyColor"
-                value={ this.state.bodyColor }
-                onChange={ this.handleChange2 }
+                color={ this.state.bodyColor }
+                onChange={ this.onChangeComplete2 }
                 />
               </FormGroup >
             </Media>
