@@ -6,7 +6,7 @@ import AdminMenu from './AdminMenu';
 class EditMenu extends Component {
   render() {
     return (
-      <div>Edit table page
+      <div>
         <MenuForm/>
         <AdminMenu/>
       </div>

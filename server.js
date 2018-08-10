@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const router = express.Router();
 require ('dotenv').config();
 
 //Controllers in routes folder / RELATIVE PATH
@@ -9,10 +10,11 @@ const orders = require('./routes/api/orders');
 const admins = require('./routes/api/admin');
 const products = require('./routes/api/product');
 const categorys = require('./routes/api/categorys');
-const session = require('express-session')
-const router = express.Router();
-const cors = require('cors')
-const path = require('path')
+const website = require('./routes/api/website');
+
+const session = require('express-session');
+const cors = require('cors');
+const path = require('path');
 const app = express();
 app.use(session({
   resave: true,
@@ -48,6 +50,7 @@ app.use('/api/admin', admins);
 app.use('/api/order', orders);
 app.use('/api/product', products);
 app.use('/api/category', categorys);
+app.use('/api/website', website);
 
 //My Error Message .Catch all
 app.use((req,res,next)=>{

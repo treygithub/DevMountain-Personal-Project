@@ -5,7 +5,6 @@ import { Card, CardImg, CardText, CardBody,
 
 
 const AdminProduct = (props) => {
-  console.log("src",props)
   return (
     <div>
       <Card className="deck">

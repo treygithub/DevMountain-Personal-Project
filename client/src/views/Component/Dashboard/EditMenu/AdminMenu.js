@@ -51,7 +51,7 @@ class AdminMenu extends Component {
             </Col>
          )})
 
-        //Render iteam to screen + link button to form field
+        //Render item to screen + link button to form field
          return (
         <div>
             <Container className="container">

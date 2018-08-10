@@ -16,8 +16,7 @@ class MenuForm extends Component {
       price:'',
       description:'',
       categoryId:'',
-      productImage:'',
-      errors:''
+      productImage:''
     }
     this.onChange1=this.onChange1.bind(this);
     this.addProduct=this.addProduct.bind(this);
@@ -30,7 +29,6 @@ onChange1(e){
 addProduct = async(e) => {
   e.preventDefault();
   const { name, price, description, categoryId, productImage} = this.state;
-  console.log(productImage);
   let data = new FormData();
   data.append('file', document);
   data.append('name', name);
@@ -40,7 +38,6 @@ addProduct = async(e) => {
   data.append('productImage', productImage);
   // console.log("i posted")
   const response = await axios.post("/api/product", data)
- 
 }
 
 // addProduct async (){
@@ -75,10 +72,12 @@ onFileDrop = (file) => {
 }
 
   render() {
-    console.log(this.state.productImage)
+    // console.log(this.state.productImage)
 
     // console.log(this.state.productImage)
     // console.log(this.props)
+
+    // const {getProducts} = this.props
     return (
       <Form type="multipart/form-data" onSubmit={this.addProduct} className="container" style={{maxWidth:600}}>
         <FormGroup>
@@ -111,11 +110,11 @@ onFileDrop = (file) => {
           id="SelectCategory" 
           value={this.state.categoryId}
           onChange={this.onChange1}>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option>Starters</option>
+            <option>Soup</option>
+            <option>Salad</option>
+            <option>Sandwiches</option>
+            <option>Burgers</option>
           </Input>
         </FormGroup>
 
@@ -131,7 +130,7 @@ onFileDrop = (file) => {
         </FormGroup>
 
         <FormGroup>
-          <Label for="exampleFile">File</Label>
+          <Label for="file">File</Label>
           {/* <Input 
             value={this.state.productImage}
             onChange={this.onChange1}
@@ -140,7 +139,7 @@ onFileDrop = (file) => {
             id="File" 
             className="File"
             /> */}
-            <Dropzone onDrop={this.onFileDrop} />
+            <Dropzone id="file" onDrop={this.onFileDrop} />
           <FormText color="muted">
             Picture and Description fields are optional, however every item must have a name, price and Category.
           </FormText>
