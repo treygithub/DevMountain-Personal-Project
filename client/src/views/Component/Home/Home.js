@@ -38,15 +38,50 @@ class Home extends Component {
       
     render(){
         let {sections} = this.props.website
-        console.log(this.props)
+        console.log("CHECK TO SEE IF SECTION HAS SIDE PROPERTY", this.props)
         let allSections = sections.map(e => {
+            // if else here
             return (
                 <div key={e._id}>
-                    <h3>{e.title}</h3>
-                    <p>{e.body}</p>
+                    {/* <h3>{e.title}</h3>
+                    <p>{e.body}</p> */}
+                    <Container fluid>
+                        <Row>
+                            <Col  >
+                                <Media >
+                                    <img style={{ width:'100%',height:'100vh'}} src={burger} alt="Food" />
+                                </Media>
+                                </Col>
+                                <Col  >   
+                                <Media className="content wow fadeInRight content" data-wow-duration="2s" data-wow-offset="200"  body align="middle">
+                                    <Media style={{color: e.titleColor}} heading className="pretty">{e.title}</Media>
+                                    <p style={{color: e.bodyColor}}>
+                                     {e.body}
+                                    </p>                        
+                                    <br/>
+                                    <Button outline color="secondary">View Menu</Button>
+                                </Media>
+                            </Col>   
+                        </Row>
+                    </Container>
                 </div>
             )
         })
+        // if(e.side === "right"){
+//   return (
+//     <div>
+//       <p></p>
+//       <img />
+//     </div>
+//   )
+// } else {
+//   return (
+//   <div>
+//       <img />
+//       <p></p>
+//   </div>
+//   )
+// }
     return(
         <div>
 

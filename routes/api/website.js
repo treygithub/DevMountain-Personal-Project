@@ -71,11 +71,12 @@ router.post("/", upload.single('image'), (req, res, next) => {
     });
 });
 
+
   router.put("/edit/:id", function (req, res, next){
     console.log("hit")
     console.log(req.params)
     console.log(req.body)
-    Website.findByIdAndUpdate({_id:req.params.id}, { $set: { title: req.body.title, body: req.body.body,titleColor:req.body.titleColor,bodyColor:req.body.bodyColor }}).then(function(){
+    Website.findByIdAndUpdate({_id:req.params.id}, { $set: { title: req.body.title, body: req.body.body,titleColor:req.body.titleColor,bodyColor:req.body.bodyColor,image:req.body.image }}).then(function(){
       Website.findOne({_id:req.params.id}).then(function(website){
           res.send(website);
       })

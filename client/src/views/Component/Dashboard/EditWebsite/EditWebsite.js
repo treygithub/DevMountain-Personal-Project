@@ -18,7 +18,8 @@ import {addSection, editSection} from "../../../../ducks/reducers/websiteReducer
        titleColor:'#face',
        body:'',
        bodyColor:'#face',
-       currentId: 0
+       currentId: 0,
+       currentSide: "right"
      }
      this.onChange3=this.onChange3.bind(this);
      this.patchReq=this.patchReq.bind(this);
@@ -68,6 +69,12 @@ updateCurrentId(val){
   console.log(val)
   this.setState({
     currentId: val
+  })
+}
+
+updateSide(val){
+  this.setState({
+    currentSide: val
   })
 }
 
@@ -167,6 +174,10 @@ onFileDrop = (file) => {
               <option value={e._id}>{`Section ${i + 1}`}</option>
             )
           })}
+        </select>
+        <select onChange={(e) => this.updateSide(e.target.value)}>
+          <option value="right">Right</option>
+          <option value="left">Left</option>
         </select>
         < Button onClick = {this.editSection} type="submit">Submit</Button>
       </Form>
