@@ -2,23 +2,23 @@ const mongoose = require('mongoose');
 
 const productSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    Tile: { 
+    title: { 
         type: String, 
         required: false 
     },
-    TitleColor: { 
+    titleColor: { 
         type: String, 
         required: false
     },
-    Body: { 
+    body: { 
         type: String, 
         required: false
     },
-    BodyColor: { 
+    bodyColor: { 
         type: String, 
         required: false
     },
-    pageImage: { 
+    image: { 
         type: String, 
         required: false
     }

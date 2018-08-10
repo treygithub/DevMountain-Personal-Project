@@ -12,27 +12,34 @@ import { SliderPicker } from 'react-color'
      this.state={
        website:[],
        title:'',
-       titleColor:'',
+       titleColor:'#face',
        body:'',
-       bodyColor:'',
+       bodyColor:'#face',
        image:''
      }
      this.onChange3=this.onChange3.bind(this);
      this.patchReq=this.patchReq.bind(this);
    }
-   handleChangeComplete = (color) => {
-     console.log(color.rgb)
-    this.setState({ titleColor: color.hex.rgb });
+   handleChange = (color, e) => {
+    e.preventDefault();
+    this.setState({ titleColor: color.hex });
+  };
+  handleChange2 = (color, e) => {
+    e.preventDefault();
+    this.setState({ bodyColor: color.hex });
   };
 
 onChange3(e){
-  console.log(e.target.value)
+  // console.log(e.target.value)
  this.setState({[e.target.name]: e.target.value});
 }
 
 patchReq = async(e) => {
  e.preventDefault();
  const {title,titleColor,body,bodyColor,image } = this.state;
+
+//  const data
+
  let data = new FormData();
  data.append('file', document);
  data.append('title', title);
@@ -40,14 +47,26 @@ patchReq = async(e) => {
  data.append('body', body);
  data.append('bodyColor', bodyColor);
  data.append('image', image);
- const response = await axios.post("/api/product", data)
+
+//  const data
+ const response = await axios.post("/api/website",  data)
 }
+
+
+// shipMe(id,name){
+//   axios.put(`/api/website/${id}`,{name}).then(results => {
+//     this.setState({ database:results.data })
+//   })
+// }
+
+
 onFileDrop = (file) => {
   this.setState({image: file[0]});
-  console.log(this.state.image);
+  // console.log(this.state.image);
 }
+
   render() {
-    
+    // console.log(this.state.bodyColor)
     return (
     <Container className="cmsContainer" fluid>
       <Form type="multipart/form-data" onSubmit={this.patchReq} className="container">
@@ -60,7 +79,7 @@ onFileDrop = (file) => {
                 <Input
                  className="textArea"  
                  type="textarea" 
-                 name="text" 
+                 name="title" 
                  id="title" 
                  value={this.state.title}
                  onChange={this.onChange3}
@@ -73,8 +92,9 @@ onFileDrop = (file) => {
               <FormGroup>
                 <Label for="titleColor">Font Color</Label>
                 <SliderPicker
-                color={ this.state.titleColor }
-                onChangeComplete={ this.handleChangeComplete }
+                name="titleColor"
+                value={ this.state.titleColor }
+                onChange={ this.handleChange }
                 />
               </FormGroup>
             </Media>
@@ -101,8 +121,9 @@ onFileDrop = (file) => {
               <FormGroup>
                 <Label for="Color-2">Font Color</Label>
                 <SliderPicker
-                color={ this.state.bodyColor }
-                onChangeComplete={ this.handleChangeComplete }
+                name="bodyColor"
+                value={ this.state.bodyColor }
+                onChange={ this.handleChange2 }
                 />
               </FormGroup >
             </Media>

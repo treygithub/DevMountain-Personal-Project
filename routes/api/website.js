@@ -50,7 +50,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", upload.single('image'), (req, res, next) => {
-  console.log(req.body)
+  console.log(req.body.data)
   console.log("hit")
   const website = new Website({
     _id: new mongoose.Types.ObjectId(),
@@ -60,7 +60,7 @@ router.post("/", upload.single('image'), (req, res, next) => {
     bodyColor: req.body.bodyColor,
     image: req.file.path
   });
-  Website
+  website
     .save()
     .then(result => {
       res.status(201).json(result);
@@ -73,26 +73,20 @@ router.post("/", upload.single('image'), (req, res, next) => {
     });
 });
 
-router.patch("/:webId", (req, res, next) => {
-    const id = req.params.webId;
-    const updateOps = {};
-    for (const ops of req.body) {
-      updateOps[ops.propName] = ops.value;
-    }
-    Website.update({ _id: id }, { $set: updateOps })
-      .exec()
-      .then(result => {
-        res.status(200).json({
-            message: 'Product updated'
-        });
+  router.put("/:id", function (req, res, next){
+    Website.findByIdAndUpdate({_id:req.params.id}, req.body).then(function(){
+      Website.findOne({_id:req.params.id}).then(function(website){
+          res.send(website);
       })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json({
-          error: err
-        });
-      });
-  });
+    })
+  })
+
+  // Error.findOneAndUpdate({_id: req.params.id},{ $set: { name: req.body }},{new: true},function(err,updatedInfos){
+  //       if(err)
+  //           return res.send(err);
+  //       return res.json(updatedInfos);
+  //   });
+
 
 
 module.exports = router;

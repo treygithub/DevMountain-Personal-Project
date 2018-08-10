@@ -5,32 +5,36 @@ import {Button, Media, Row, Container, Col} from 'reactstrap';
 import Mosaic from '../Mosaic/Mosaic';
 import JumboTron from '../JumboTron/JumboTron';
 import WOW from 'wowjs';
+import axios from 'axios';
+
 // import Admin from '../../admin/admin';
  
-
 class Home extends Component {
     constructor(props){
         super(props);
         this.state={
-            blahh:''
+            stuff:[],
+            headingColor: 'red'
         }
     }
     componentDidMount() {
         const wow = new WOW.WOW();
         wow.init();
+        // this.getColor()
       }
 
-// getCurrentEvents(){
-//     axios.get('/api/events')
-//     .then(res => {
-//         this.setState({
-//             events: data.events
-//         })
-//     })
-// }
+    //   getColor(id){
+    //     axios.get(`/api/website/${id}`).then(payload => {
+    //       console.log(payload)
+    //       this.setState({
+    //         stuff: payload.data
+    //       });
+    //     })
+    //   }
 
       
-      render(){
+    render(){
+
     return(
         <div>
 
@@ -40,7 +44,7 @@ class Home extends Component {
                 <Row>
                     <Col >
                         <Media className="content wow fadeInUp " data-wow-duration="2s" data-wow-offset="300"  body align="middle">
-                            <Media heading className="pretty">Media Heading</Media>
+                            <h4 heading className="pretty">Media Heading</h4>
                             <p>
                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
                                 ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
@@ -70,7 +74,7 @@ class Home extends Component {
                         </Col>
                         <Col  >   
                         <Media className="content wow fadeInRight content" data-wow-duration="2s" data-wow-offset="200"  body align="middle">
-                            <Media  heading className="pretty">Media Heading</Media>
+                            <Media style={{color: this.state.headingColor}} heading className="pretty">Media Heading</Media>
                             <p>
                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
                                 ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
