@@ -6,6 +6,12 @@ import Mosaic from '../Mosaic/Mosaic';
 import JumboTron from '../JumboTron/JumboTron';
 import WOW from 'wowjs';
 import axios from 'axios';
+// import Svg from './svg'
+
+import {connect} from "react-redux";
+import {getSections} from "../../../ducks/reducers/websiteReducer"
+import { withRouter } from 'react-router'
+
 
 // import Admin from '../../admin/admin';
  
@@ -17,28 +23,35 @@ class Home extends Component {
             headingColor: 'red'
         }
     }
-    componentDidMount() {
+     componentDidMount() {
+        console.log("hit")
+        this.getSections()
         const wow = new WOW.WOW();
         wow.init();
-        // this.getColor()
       }
 
-    //   getColor(id){
-    //     axios.get(`/api/website/${id}`).then(payload => {
-    //       console.log(payload)
-    //       this.setState({
-    //         stuff: payload.data
-    //       });
-    //     })
-    //   }
+      async getSections(){
+        await this.props.getSections()
+      }
+
 
       
     render(){
-
+        let {sections} = this.props.website
+        console.log(this.props)
+        let allSections = sections.map(e => {
+            return (
+                <div key={e._id}>
+                    <h3>{e.title}</h3>
+                    <p>{e.body}</p>
+                </div>
+            )
+        })
     return(
         <div>
 
             <JumboTron />
+            {/* <Svg/> */}
 
             <Container fluid>
                 <Row>
@@ -112,7 +125,7 @@ class Home extends Component {
                      </Col> 
                 </Row>
             </Container>
-
+            {allSections}
                        
         <Mosaic/>
             
@@ -121,4 +134,6 @@ class Home extends Component {
 }
 }
 
-export default Home;
+let mapStateToProps = state => state
+
+export default connect(mapStateToProps, {getSections})(withRouter(Home));

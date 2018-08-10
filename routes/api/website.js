@@ -50,20 +50,18 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", upload.single('image'), (req, res, next) => {
-  console.log(req.body.data)
-  console.log("hit")
   const website = new Website({
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
     titleColor: req.body.titleColor,
     body: req.body.body,
-    bodyColor: req.body.bodyColor,
-    image: req.file.path
+    bodyColor: req.body.bodyColor
+    // image: req.file.path
   });
   website
     .save()
     .then(result => {
-      res.status(201).json(result);
+      res.status(201).json([result]);
     })
     .catch(err => {
       console.log(err);
@@ -73,20 +71,15 @@ router.post("/", upload.single('image'), (req, res, next) => {
     });
 });
 
-  router.put("/:id", function (req, res, next){
-    Website.findByIdAndUpdate({_id:req.params.id}, req.body).then(function(){
+  router.put("/edit/:id", function (req, res, next){
+    console.log("hit")
+    console.log(req.params)
+    console.log(req.body)
+    Website.findByIdAndUpdate({_id:req.params.id}, { $set: { title: req.body.title, body: req.body.body,titleColor:req.body.titleColor,bodyColor:req.body.bodyColor }}).then(function(){
       Website.findOne({_id:req.params.id}).then(function(website){
           res.send(website);
       })
     })
   })
-
-  // Error.findOneAndUpdate({_id: req.params.id},{ $set: { name: req.body }},{new: true},function(err,updatedInfos){
-  //       if(err)
-  //           return res.send(err);
-  //       return res.json(updatedInfos);
-  //   });
-
-
 
 module.exports = router;

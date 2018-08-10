@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Media } from 'reactstrap';
 import { connect } from 'react-redux';
 // import { postNewProduct } from '../../../../ducks/actions/productActions';
-import { addProduct } from "../../../../ducks/reducers/newProductReducer"
+// import { addProduct } from "../../../../ducks/reducers/newProductReducer"
 import  { withRouter } from 'react-router-dom';
 import moment from 'moment';
 import Dropzone from 'react-dropzone'
@@ -151,7 +151,4 @@ onFileDrop = (file) => {
   }
 }
 
-
-const mapStateToProps = (state) => state;
-
-export default connect(mapStateToProps, { addProduct })(withRouter(MenuForm));
+export default withRouter(MenuForm);
