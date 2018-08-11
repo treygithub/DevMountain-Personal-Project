@@ -1,14 +1,28 @@
+body,html{
+    margin:0;
+    padding:0;
+}
+
 .cmsContainer{
-    padding-top: 5%;
-    width: 38%;
-    margin-right: 30%;
-    margin-left: 30%;
+   
+
+    width: 45%;
+    margin-right: 25%;
+    margin-left: 25%;
 }
 .h1-cms{
+    margin-top: 4%;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding-bottom:5%;
 }
 .textArea{
-    min-width: 400px;
+    min-width: 350px;
+}
+
+.text-box{
+    margin-top: 10%;
+}
+.colorBox{
+    margin-top:40%;
 }

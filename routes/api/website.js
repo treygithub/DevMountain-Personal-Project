@@ -50,13 +50,16 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", upload.single('image'), (req, res, next) => {
+  console.log("hit post")
   const website = new Website({
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
     titleColor: req.body.titleColor,
     body: req.body.body,
-    bodyColor: req.body.bodyColor
-    // image: req.file.path
+    bodyColor: req.body.bodyColor,
+    image: req.file.path,
+    currentSide: req.body.currentSide
+
   });
   website
     .save()
@@ -71,12 +74,11 @@ router.post("/", upload.single('image'), (req, res, next) => {
     });
 });
 
-
   router.put("/edit/:id", function (req, res, next){
-    console.log("hit")
+    console.log("hit put")
     console.log(req.params)
     console.log(req.body)
-    Website.findByIdAndUpdate({_id:req.params.id}, { $set: { title: req.body.title, body: req.body.body,titleColor:req.body.titleColor,bodyColor:req.body.bodyColor,image:req.body.image }}).then(function(){
+    Website.findByIdAndUpdate({_id:req.params.id}, { $set: { title: req.body.title, body: req.body.body,titleColor:req.body.titleColor,bodyColor:req.body.bodyColor,image:req.body.image, currentSide:req.body.currentSide }}).then(function(){
       Website.findOne({_id:req.params.id}).then(function(website){
           res.send(website);
       })

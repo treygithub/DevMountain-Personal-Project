@@ -1,19 +1,18 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import './Home.css'
 import burger from './burger.jpg';
 import {Button, Media, Row, Container, Col} from 'reactstrap';
 import Mosaic from '../Mosaic/Mosaic';
 import JumboTron from '../JumboTron/JumboTron';
 import WOW from 'wowjs';
-import axios from 'axios';
-// import Svg from './svg'
+// import Svg from './svg';
 
 import {connect} from "react-redux";
-import {getSections} from "../../../ducks/reducers/websiteReducer"
-import { withRouter } from 'react-router'
+import {getSections} from "../../../ducks/reducers/websiteReducer";
+import { withRouter } from 'react-router';
 
 
-// import Admin from '../../admin/admin';
+
  
 class Home extends Component {
     constructor(props){
@@ -23,49 +22,95 @@ class Home extends Component {
             headingColor: 'red'
         }
     }
-     componentDidMount() {
-        console.log("hit")
-        this.getSections()
-        const wow = new WOW.WOW();
-        wow.init();
+    
+      componentDidMount() {
+         this.getSections();
+      
       }
 
       async getSections(){
         await this.props.getSections()
+        const wow = new WOW.WOW();
+        wow.init();
       }
-
-
-      
+   
     render(){
         let {sections} = this.props.website
         console.log("CHECK TO SEE IF SECTION HAS SIDE PROPERTY", this.props)
         let allSections = sections.map(e => {
-            // if else here
-            return (
-                <div key={e._id}>
-                    {/* <h3>{e.title}</h3>
-                    <p>{e.body}</p> */}
+                 if(e.currentSide === "right"){
+                      return (
+                        <div>
+                         <Container fluid>
+                                <Row>
+                                    <Col >
+                                        <Media className="content wow fadeInUp " data-wow-duration="2s" data-wow-offset="300"  body align="middle">
+                                            <h4 style={{color: e.titleColor}} heading className="pretty">{e.title}</h4>
+                                            <p style={{color: e.bodyColor}}>
+                                            {e.body}
+                                            </p>
+                                            <br/>
+                                            <Button outline color="secondary">View Menu</Button>
+                                        </Media>
+                                    </Col>
+                                    <Col >   
+                                        <Media>
+                                            <img className=" img-fluid" style={{ width:'100%',height:'100vh '}} src={burger} alt="Food" />
+                                        </Media>
+                                    </Col> 
+                                </Row>
+                            </Container>
+                        </div>
+                      )
+                    } else {
+                      return (
+
+                          <div key={e._id}>
                     <Container fluid>
-                        <Row>
-                            <Col  >
-                                <Media >
-                                    <img style={{ width:'100%',height:'100vh'}} src={burger} alt="Food" />
+                         <Row>
+                             <Col  >
+                                 <Media >
+                                     <img style={{ width:'100%',height:'100vh'}} src={burger} alt="Food" />
                                 </Media>
                                 </Col>
-                                <Col  >   
-                                <Media className="content wow fadeInRight content" data-wow-duration="2s" data-wow-offset="200"  body align="middle">
-                                    <Media style={{color: e.titleColor}} heading className="pretty">{e.title}</Media>
-                                    <p style={{color: e.bodyColor}}>
-                                     {e.body}
-                                    </p>                        
-                                    <br/>
-                                    <Button outline color="secondary">View Menu</Button>
+                                 <Col  >   
+                                 <Media className="content wow fadeInRight content" data-wow-duration="2s" data-wow-offset="200"  body align="middle">
+                                     <Media style={{color: e.titleColor}} heading className="pretty">{e.title}</Media>
+                                     <p style={{color: e.bodyColor}}>
+                                      {e.body}
+                                     </p>                        
+                                     <br/>
+                                     <Button outline color="secondary">View Menu</Button>
                                 </Media>
                             </Col>   
                         </Row>
                     </Container>
-                </div>
-            )
+                 </div>
+                      )
+                    }
+            
+                // <div key={e._id}>
+                //     <Container fluid>
+                //         <Row>
+                //             <Col  >
+                //                 <Media >
+                //                     <img style={{ width:'100%',height:'100vh'}} src={burger} alt="Food" />
+                //                 </Media>
+                //                 </Col>
+                //                 <Col  >   
+                //                 <Media className="content wow fadeInRight content" data-wow-duration="2s" data-wow-offset="200"  body align="middle">
+                //                     <Media style={{color: e.titleColor}} heading className="pretty">{e.title}</Media>
+                //                     <p style={{color: e.bodyColor}}>
+                //                      {e.body}
+                //                     </p>                        
+                //                     <br/>
+                //                     <Button outline color="secondary">View Menu</Button>
+                //                 </Media>
+                //             </Col>   
+                //         </Row>
+                //     </Container>
+                // </div>
+            
         })
         // if(e.side === "right"){
 //   return (
@@ -88,7 +133,7 @@ class Home extends Component {
             <JumboTron />
             {/* <Svg/> */}
 
-            <Container fluid>
+            {/* <Container fluid>
                 <Row>
                     <Col >
                         <Media className="content wow fadeInUp " data-wow-duration="2s" data-wow-offset="300"  body align="middle">
@@ -110,9 +155,9 @@ class Home extends Component {
                         </Media>
                      </Col> 
                 </Row>
-            </Container>
+            </Container> */}
 
-            <Container fluid>
+            {/* <Container fluid>
                 <Row>
                         <Col  >
                         
@@ -135,9 +180,9 @@ class Home extends Component {
                         </Media>
                      </Col>   
                 </Row>
-            </Container>
+            </Container> */}
 
-            <Container fluid>
+            {/* <Container fluid>
                 <Row>
                     <Col >
                         <Media className="content wow fadeInLeft" data-wow-offset="200" data-wow-duration="2s"  body align="middle">
@@ -159,7 +204,7 @@ class Home extends Component {
                         </Media>
                      </Col> 
                 </Row>
-            </Container>
+            </Container> */}
             {allSections}
                        
         <Mosaic/>
@@ -168,6 +213,10 @@ class Home extends Component {
     )
 }
 }
+// ExampleComponent.propTypes = {
+//     show: React.PropTypes.bool.isRequired
+//   };
+  
 
 let mapStateToProps = state => state
 

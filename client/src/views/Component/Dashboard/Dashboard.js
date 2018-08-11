@@ -36,8 +36,8 @@ return(
         <tbody key={i}>
           <tr>
             <th scope="row"></th>
-            <td>name={e.name}</td>
-            <td>email={e.email}</td>
+            <td>{e.name}</td>
+            <td>{e.email}</td>
             <td> 
               <DeleteAdminBTN id={e._id} getCurrentAdmin={this.getCurrentAdmin}
               /> 
@@ -70,9 +70,9 @@ return(
          <Table striped>
             <thead>
               <tr>
-                <th>#</th>
-                <th>e.name</th>
-                <th>e.email</th>
+                <th></th>
+                <th>Name</th>
+                <th>email</th>
                 <th></th>
               </tr>
             </thead>

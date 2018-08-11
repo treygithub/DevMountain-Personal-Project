@@ -1,13 +1,14 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Col,Row, Container, Media } from 'reactstrap';
-import './Editwebsite.css'
-import axios from 'axios'
+import './Editwebsite.css';
 import moment from 'moment';
-import Dropzone from 'react-dropzone'
-import { SliderPicker } from 'react-color'
+import Dropzone from 'react-dropzone';
+import { SliderPicker } from 'react-color';
+import FontPicker from 'font-picker-react';
+import WOW from 'wowjs';
 
 import {connect} from "react-redux"
-import {addSection, editSection} from "../../../../ducks/reducers/websiteReducer"
+import {addSection, editSection} from "../../../../ducks/reducers/websiteReducer";
 
  class EditWebsite extends Component {
    constructor(){
@@ -19,11 +20,17 @@ import {addSection, editSection} from "../../../../ducks/reducers/websiteReducer
        body:'',
        bodyColor:'#face',
        currentId: 0,
-       currentSide: "right"
+       currentSide: "right",
+       image : [],
+       activeFont: 'Open Sans'
      }
      this.onChange3=this.onChange3.bind(this);
      this.patchReq=this.patchReq.bind(this);
    }
+   componentDidMount() {
+    const wow = new WOW.WOW();
+    wow.init();
+  }
    onChangeComplete = (color, e) => {
     e.preventDefault();
     this.setState({ titleColor: color.hex });
@@ -40,33 +47,21 @@ onChange3(e){
 
 patchReq = async(e) => {
  e.preventDefault();
- console.log(this.state)
- const {title,titleColor,body,bodyColor,image } = this.state;
+//  console.log(this.state)
+ const {title,titleColor,body,bodyColor,image,currentSide } = this.state;
 
-//  const data
-
-//  let data = new FormData();
-//  data.append('file', document);
-//  data.append('title', title);
-//  data.append('titleColor', titleColor);
-//  data.append('body', body);
-//  data.append('bodyColor', bodyColor);
-//  data.append('image', image);
-
-//  const data
-// console.log(data)
- await this.props.addSection(title,titleColor,body,bodyColor,image)
+ await this.props.addSection(title,titleColor,body,bodyColor,image,currentSide)
 }
 
 editSection = () => {
-  console.log(this.state)
-  const {title,titleColor,body,bodyColor,image, currentId } = this.state;
-  console.log(title,titleColor,body,bodyColor,image, currentId)
-  this.props.editSection(currentId, title,titleColor,body,bodyColor,image)
+  // console.log(this.state)
+  const {title,titleColor,body,bodyColor,image, currentId,currentSide } = this.state;
+  // console.log(title,titleColor,body,bodyColor,image, currentId,currentSide)
+  this.props.editSection(currentId, title,titleColor,body,bodyColor,image,currentSide)
 }
 
 updateCurrentId(val){
-  console.log(val)
+  // console.log(val)
   this.setState({
     currentId: val
   })
@@ -78,41 +73,34 @@ updateSide(val){
   })
 }
 
-
-// patchReq(id){
-//   console.log(id)
-//   const {title,titleColor,body,bodyColor} = this.state;
-//   axios.put(`/api/website/${id}`,{title,titleColor,body,bodyColor}).then(results => {
-//     console.log(results)
-//   })
-// }
-
-
 onFileDrop = (file) => {
+  // console.log(file)
   this.setState({image: file[0]});
-  // console.log(this.state.image);
+  
 }
 
   render() {
-    console.log(this.props)
-    console.log(this.state)
+    // console.log(this.props)
+    // console.log(this.state)
     // console.log(this.state.bodyColor)
+    // his.state.image.preview;
     let { sections } = this.props.website
     
     return (
     <Container className="cmsContainer" fluid>
       <Form type="multipart/form-data" onSubmit={this.editSection} className="container">
-          <h4 className="h1-cms">Website Content Managment system</h4>
+          <h4 data-wow-duration="2s" className="content wow fadeInDown h1-cms">Website Content Managment system</h4>
         <Row>
           <Col xs="auto">
             <Media>
-              <FormGroup>
+              <FormGroup className="content wow fadeInLeft text-box">
                 <Label for="title">Media Title</Label>
                 <Input
-                 className="textArea"  
-                 type="textarea" 
-                 name="title" 
-                 id="title" 
+                style={{color:this.state.titleColor}}
+                 className="textArea apply-font"
+                 type="textarea"
+                 name="title"
+                //  id="title"
                  value={this.state.title}
                  onChange={this.onChange3}
                  />
@@ -121,7 +109,7 @@ onFileDrop = (file) => {
           </Col>
           <Col xs="auto">
             <Media>
-              <FormGroup>
+              <FormGroup className="colorBox">
                 <Label for="titleColor">Font Color</Label>
                 <SliderPicker
                 name="titleColor"
@@ -132,13 +120,24 @@ onFileDrop = (file) => {
             </Media>
           </Col>
         </Row>
+        <FormGroup>
+            <Label for="font-picker">Font Style</Label>
+            <FontPicker
+              name="main"
+              id="main"
+              apiKey="AIzaSyDduSTYqkuEnzTlov7DNzmM0G2SNwk34hs"
+              activeFont={this.state.activeFont}
+              onChange={nextFont => this.setState({ activeFont: nextFont.family })}
+            />
+        </FormGroup >
         <Row>
           <Col xs="auto">
             <Media>
-              <FormGroup>
+              <FormGroup  className="content wow fadeInLeft text-box">
                 <Label  for="body">Media Body</Label>
                 <Input 
-                className="textArea" 
+                style={{color:this.state.bodyColor}}
+                className="textArea apply-font" 
                 type="textarea" 
                 name="body" 
                 id="body"
@@ -150,7 +149,7 @@ onFileDrop = (file) => {
           </Col>
           <Col xs="auto">
             <Media>
-              <FormGroup>
+              <FormGroup className="colorBox">
                 <Label for="Color-2">Font Color</Label>
                 <SliderPicker
                 name="bodyColor"
@@ -162,8 +161,18 @@ onFileDrop = (file) => {
           </Col>
         </Row>
         <FormGroup>
-          <Label for="fileUpLoad">Main Website Image</Label>
-            <Dropzone id="fileUpLoad" onDrop={this.onFileDrop} />
+            <Label for="font-picker">Font Style</Label>
+            <FontPicker
+              apiKey="AIzaSyAXquiSVreKI4iL_bdzKaELjGOzurrkKJE"
+              activeFont={this.state.activeFont}
+              onChange={nextFont => this.setState({ activeFont: nextFont.family })}
+            />
+        </FormGroup>
+        <FormGroup>
+          <Label for="fileUpLoad">Main Image</Label>
+            <Dropzone id="fileUpLoad" onDrop={this.onFileDrop}>
+              <img style={{width: '199px', height: '198px'}} src={this.state.image.preview && this.state.image.preview} />
+            </Dropzone>
           <FormText color="muted">
             Picture and Description fields are optional, however every item must have a name, price and Category.
           </FormText>
