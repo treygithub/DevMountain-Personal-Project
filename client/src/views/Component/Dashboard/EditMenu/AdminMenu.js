@@ -35,30 +35,132 @@ class AdminMenu extends Component {
     //map over state and pass props to child
     render() {
       let {items} = this.state
-      let instanceLoop  = items.map((e,i) => {
-        return (
-          <Col sm="4">
-          <AdminProduct 
-            key={i}
-            name={e.name}
-            price={e.price}
-            description={e.description}
-            catId={e.categoryId}
-            img={e.productImage}
-            id={e._id}
-            getProducts={this.getProducts}
-            />  
-            </Col>
-         )})
+
+         let instanceLoopSoup  = items.map((e,i) => {
+          if(e.categoryId == 1)
+          return (
+            <Col sm="4">
+            <AdminProduct 
+              key={i}
+              i={i}
+              name={e.name}
+              price={e.price}
+              description={e.description}
+              catId={e.categoryId}
+              img={e.productImage}
+              id={e._id}
+              getProducts={this.getProducts}
+              />  
+              </Col>
+           )})
+         let instanceLoopSalads  = items.map((e,i) => {
+          if(e.categoryId == 2)
+          return (
+            <Col sm="4">
+            <AdminProduct 
+              key={i}
+              i={i}
+              name={e.name}
+              price={e.price}
+              description={e.description}
+              catId={e.categoryId}
+              img={e.productImage}
+              id={e._id}
+              getProducts={this.getProducts}
+              />  
+              </Col>
+           )})
+
+           let instanceLoopSandwitch  = items.map((e,i) => {
+            if(e.categoryId == 3)
+            return (
+              <Col sm="4">
+              <AdminProduct 
+                key={i}
+                i={i}
+                name={e.name}
+                price={e.price}
+                description={e.description}
+                catId={e.categoryId}
+                img={e.productImage}
+                id={e._id}
+                getProducts={this.getProducts}
+                />  
+                </Col>
+             )})
+             let instanceLoopDesert  = items.map((e,i) => {
+              if(e.categoryId == 4)
+              return (
+                <Col sm="4">
+                <AdminProduct 
+                  key={i}
+                  i={i}
+                  name={e.name}
+                  price={e.price}
+                  description={e.description}
+                  catId={e.categoryId}
+                  img={e.productImage}
+                  id={e._id}
+                  getProducts={this.getProducts}
+                  />  
+                  </Col>
+               )})
+
+             let instanceLoopBar  = items.map((e,i) => {
+              if(e.categoryId == 5)
+              return (
+                <Col sm="4">
+                <AdminProduct 
+                  key={i}
+                  i={i}
+                  name={e.name}
+                  price={e.price}
+                  description={e.description}
+                  catId={e.categoryId}
+                  img={e.productImage}
+                  id={e._id}
+                  getProducts={this.getProducts}
+                  />  
+                  </Col>
+               )})
+        
 
         //Render item to screen + link button to form field
          return (
         <div>
-            <Container className="container">
-                <Row className="products">
-                {instanceLoop}
+            <Container style={{marginLeft:120}} id='soup' fluid>
+                <h1 className="soup">Soups</h1>
+                <Row  className="products">   
+                  {instanceLoopSoup}
                 </Row>
-                <p>THIS IS FROM ADMIN MENU</p>
+            </Container>
+
+            <Container style={{marginLeft:120}} id='salad' fluid>
+            <h1 className="soup">Salads</h1>
+                <Row  className="products">   
+                  {instanceLoopSalads}
+                </Row>
+            </Container>
+
+            <Container style={{marginLeft:120}} id='sandwitch' fluid>
+            <h1 className="soup">Sandwitches</h1>
+                <Row  className="products">   
+                  {instanceLoopSandwitch}
+                </Row>
+            </Container>
+
+            <Container style={{marginLeft:120}} id='deserts' fluid>
+            <h1 className="soup">Desert</h1>
+              <Row  className="products">
+                {instanceLoopDesert}
+              </Row>
+            </Container>
+
+            <Container style={{marginLeft:120}} id='bar' fluid>
+            <h1 className="soup">Bar</h1>
+              <Row  className="products">
+                {instanceLoopBar}
+              </Row>
             </Container>
         </div>)
     }

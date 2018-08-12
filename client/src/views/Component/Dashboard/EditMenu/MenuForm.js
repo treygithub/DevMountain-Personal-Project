@@ -7,6 +7,7 @@ import  { withRouter } from 'react-router-dom';
 import moment from 'moment';
 import Dropzone from 'react-dropzone'
 import axios from 'axios';
+import './menuform.css'
 
 class MenuForm extends Component {
   constructor(props){
@@ -68,7 +69,7 @@ onFileDrop = (file) => {
     return (
       <Form type="multipart/form-data" onSubmit={this.addProduct} className="container" style={{maxWidth:600}}>
         <FormGroup>
-          <Media body align="middle">Create a new Menu item</Media>
+          <Media className="header1" body align="middle">Create a new Menu item</Media>
           <Label for="itemName">Item Name</Label>
           <Input type="text"
            name="name" 
@@ -116,7 +117,9 @@ onFileDrop = (file) => {
 
         <FormGroup>
             <Label for="file">File</Label>
-              <Dropzone id="file" onDrop={this.onFileDrop} />
+              <Dropzone id="file" onDrop={this.onFileDrop}  >
+              <img style={{width: '199px', height: '198px'}} src={this.state.productImage.preview && this.state.productImage.preview} />
+              </Dropzone>
             <FormText color="muted">
               Picture and Description fields are optional, however every item must have a name, price and Category.
             </FormText>

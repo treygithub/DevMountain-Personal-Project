@@ -24,29 +24,29 @@ export default class NavBar extends Component {
     return (
       <div>
         
-        <Navbar  color="faded" light >
+        <Navbar navbar  color="faded" light >
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <NavbarBrand  className="align-center">Buttler Brothers</NavbarBrand>  
               <NavbarBrand href="/" className="align-right"><Button outline color="secondary">Make Reservations</Button></NavbarBrand>          
               <Collapse isOpen={!this.state.collapsed} navbar>
-                <Nav  navbar>
-                  <NavItem className="hello1">
-                    <NavLink  to='/'>Home</NavLink>
+                <Nav className="align-left navStuff"  navbar>
+                  <NavItem >
+                    <NavLink className="navStuff" to='/'>Home</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink  to='/Menu'>Menu</NavLink>
+                    <NavLink className="navStuff"  to='/Menu'>Menu</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink  to='/About'>About</NavLink>
+                    <NavLink className="navStuff" to='/About'>About</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink  to='/Features'>Features</NavLink>
+                    <NavLink className="navStuff" to='/Features'>Features</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink to='/Login'>Login</NavLink>
+                    <NavLink className="navStuff" to='/Login'>Login</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink to='/Cart'>Cart</NavLink>
+                    <NavLink className="navStuff" to='/Cart'>Cart</NavLink>
                   </NavItem>
                  </Nav>
               </Collapse>

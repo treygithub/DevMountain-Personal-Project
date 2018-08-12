@@ -1,0 +1,7 @@
+.navStuff{
+    font-size: 2rem;
+    color: black ;
+}
+.navStuff:hover{
+    color:gray;
+}

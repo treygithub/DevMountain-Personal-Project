@@ -38,7 +38,7 @@ class Menu extends Component {
       })
     }
     
-    // Mapping Section
+    // Mapping Section by category
     render() {
       let {items} = this.state
      

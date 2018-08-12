@@ -25,7 +25,7 @@ const {img, name, price, description, id} = this.props;
 console.log(id)
   return (
     <div>
-      <Card id={id} className="deck">
+      <Card style={{marginBottom:10}} id={id} className="deck">
         <CardImg id="card-img"top src={img}  alt="Card image cap" />
         <CardBody>
             <CardTitle> {name}</CardTitle>

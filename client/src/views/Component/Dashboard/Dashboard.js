@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
 import DeleteAdminBTN from './EditAdmin/DeleteAdminBTN'
+import './dashboard.css'
 
 
 class DashBoard extends Component {
@@ -32,7 +33,7 @@ render(){
 console.log(this.state)
  let instanceLooper  = admin.map((e,i) => {
 return(
-    <Table>
+  
         <tbody key={i}>
           <tr>
             <th scope="row"></th>
@@ -44,7 +45,7 @@ return(
             </td>
           </tr>
         </tbody>
-    </Table>
+  
     
  )})
 return(
@@ -70,14 +71,15 @@ return(
          <Table striped>
             <thead>
               <tr>
-                <th></th>
+              <th></th>
                 <th>Name</th>
                 <th>email</th>
                 <th></th>
               </tr>
             </thead>
-        </Table>
+        
               { instanceLooper }
+              </Table>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ import { Card, CardImg, CardText, CardBody,
 const AdminProduct = (props) => {
   return (
     <div>
-      <Card className="deck">
+      <Card style={{marginBottom:10}} className="deck">
         <CardImg id="card-img" top src={props.img} width="100%"  alt="Card image cap" />
         <CardBody>
           <CardTitle> {props.name}</CardTitle>
@@ -16,15 +16,12 @@ const AdminProduct = (props) => {
           <CardText>{props.description}</CardText>
           <ButtonToolbar>
             <ButtonGroup>
-              <Button size="sm" outline color="success">Add to Cart</Button>
-            </ButtonGroup>
-            <ButtonGroup>
               <DeleteProductBTN
               id={props.id}
               getProducts={props.getProducts}
               />
             </ButtonGroup> 
-            </ButtonToolbar>  
+          </ButtonToolbar>  
         </CardBody>
       </Card>
     </div>
