@@ -131,15 +131,17 @@ class Menu extends Component {
           <aside>
             <div className="inner">
               <ul id="menu">
-              <li><AnchorLink className="text" href='#soup'><Button outline color="secondary">Soup</Button></AnchorLink><span></span></li>
+              <li><AnchorLink className="text" href='#soup'><Button outline color="secondary">Soup</Button></AnchorLink></li>
 
-              <li><AnchorLink className="text" href='#salad'><Button outline color="secondary">Salad</Button></AnchorLink><span></span></li>
+              <li><AnchorLink className="text" href='#salad'><Button outline color="secondary">Salad</Button></AnchorLink></li>
 
               <li><AnchorLink className="text" href='#sandwitch'><Button outline color="secondary">Sandwitch</Button></AnchorLink></li>
 
-              <li><AnchorLink className="text" href='#deserts'><Button outline color="secondary">Deserts</Button></AnchorLink><span></span></li>
+              <li><AnchorLink className="text" href='#deserts'><Button outline color="secondary">Deserts</Button></AnchorLink></li>
 
-              <li><AnchorLink className="text" href='#bar'><Button outline color="secondary">Bar</Button></AnchorLink><span></span></li>
+              <li><AnchorLink className="text" href='#bar'><Button outline color="secondary">Bar</Button></AnchorLink>></li>
+
+              <li><AnchorLink className="text" href='#Home'><Button outline color="secondary">Home</Button></AnchorLink></li>
               </ul>
             </div>
           </aside>
@@ -147,7 +149,7 @@ class Menu extends Component {
              <Container className="container">
                 <Row>
                     <Col >
-                        <Media id="back2Top" className="content wow fadeInLeft" data-wow-duration="2s"   body align="middle">
+                        <Media id="Home" className="content wow fadeInLeft" data-wow-duration="2s"   body align="middle">
                             <h4 heading className="pretty">Menu</h4>
                             <p>
                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
@@ -166,6 +168,7 @@ class Menu extends Component {
                                 <AnchorLink href='#deserts'><Button outline color="secondary">Deserts</Button></AnchorLink>
                                 
                                 <AnchorLink href='#bar'><Button outline color="secondary">Bar</Button></AnchorLink>
+                                
                             </div>
                         </Media>
                     </Col>
@@ -178,35 +181,35 @@ class Menu extends Component {
             </Container>
 
 
-            <Container id='soup' fluid>
+            <Container style={{marginLeft:120}} id='soup' fluid>
                 <h1 className="soup">Soups</h1>
                 <Row  className="products">   
                   {instanceLoopSoup}
                 </Row>
             </Container>
 
-            <Container id='salad' fluid>
+            <Container style={{marginLeft:120}} id='salad' fluid>
             <h1 className="soup">Salads</h1>
                 <Row  className="products">   
                   {instanceLoopSalads}
                 </Row>
             </Container>
 
-            <Container id='sandwitch' fluid>
+            <Container style={{marginLeft:120}} id='sandwitch' fluid>
             <h1 className="soup">Sandwitches</h1>
                 <Row  className="products">   
                   {instanceLoopSandwitch}
                 </Row>
             </Container>
 
-            <Container id='desert' fluid>
+            <Container style={{marginLeft:120}} id='deserts' fluid>
             <h1 className="soup">Desert</h1>
               <Row  className="products">
                 {instanceLoopDesert}
               </Row>
             </Container>
 
-            <Container id='bar' fluid>
+            <Container style={{marginLeft:120}} id='bar' fluid>
             <h1 className="soup">Bar</h1>
               <Row  className="products">
                 {instanceLoopBar}
