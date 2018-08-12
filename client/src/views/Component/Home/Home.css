@@ -1,11 +1,12 @@
-
+/*Main font*/
 @import url('https://fonts.googleapis.com/css?family=Tangerine');
-/* fallback */
+/* fallback font */
 .pretty {
     font-family: 'Tangerine', serif;
     font-size: 48px;
     text-shadow: 4px 4px 4px #aaa;
   }
+
 
 .content{
   margin-top: 40%;

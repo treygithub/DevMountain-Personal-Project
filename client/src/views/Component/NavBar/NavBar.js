@@ -21,17 +21,16 @@ export default class NavBar extends Component {
   
   render() {
     
-      
     return (
       <div>
         
-        <Navbar style={{zIndex:"9999"}} className="navbar fixedTop" color="faded" light >
+        <Navbar  color="faded" light >
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
             <NavbarBrand  className="align-center">Buttler Brothers</NavbarBrand>  
               <NavbarBrand href="/" className="align-right"><Button outline color="secondary">Make Reservations</Button></NavbarBrand>          
               <Collapse isOpen={!this.state.collapsed} navbar>
-                <Nav navbar>
-                  <NavItem>
+                <Nav  navbar>
+                  <NavItem className="hello1">
                     <NavLink  to='/'>Home</NavLink>
                   </NavItem>
                   <NavItem>
@@ -52,6 +51,7 @@ export default class NavBar extends Component {
                  </Nav>
               </Collapse>
         </Navbar>
+        
         
       </div>
     );

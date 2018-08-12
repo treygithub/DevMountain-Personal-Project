@@ -58,9 +58,9 @@ router.post("/", upload.single('productImage'), (req, res, next) => {
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
-    price: parseInt(req.body.price),
-    description: req.body.desc,
-    categoryId: /*parseInt(req.body.catId)*/6,
+    price: req.body.price,
+    description: req.body.description,
+    categoryId: req.body.categoryId,
     productImage: req.file.path
   });
   product
@@ -71,7 +71,7 @@ router.post("/", upload.single('productImage'), (req, res, next) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json({
+      res.status(600).json({
         error: err
       });
     });

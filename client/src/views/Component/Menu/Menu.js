@@ -12,20 +12,23 @@ class Menu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items:[]
+      items:[],
+   
     }
    
     this.getProducts = this.getProducts.bind(this)
+ 
   }    
 
-    //Life-cycle
+    // Life-cycle
     componentDidMount(){
       this.getProducts();
       const wow = new WOW.WOW();
         wow.init();
+       
     }
 
-    //Get
+    // Get
     getProducts(){
       axios.get('/api/product').then(payload => {
         console.log(payload)
@@ -34,28 +37,13 @@ class Menu extends Component {
         });
       })
     }
-    //map over state and pass props to child
+    
+    // Mapping Section
     render() {
       let {items} = this.state
-      
-      let instanceLoopStarters  = items.map((e,i) => {
-        if(e.categoryId === 1 || e.categoryId === 2)
-        return (
-          <Col sm="4">
-          <Product 
-            key={i}
-            i={i}
-            name={e.name}
-            price={e.price}
-            description={e.description}
-            catId={e.categoryId}
-            img={e.productImage}
-            id={e._id}
-            />  
-            </Col>
-         )})
-         let instanceLoopLunch  = items.map((e,i) => {
-          if(e.categoryId === 3 || e.categoryId === 4)
+     
+         let instanceLoopSoup  = items.map((e,i) => {
+          if(e.categoryId == 1)
           return (
             <Col sm="4">
             <Product 
@@ -70,8 +58,25 @@ class Menu extends Component {
               />  
               </Col>
            )})
-           let instanceLoopDesert  = items.map((e,i) => {
-            if(e.categoryId === 5)
+         let instanceLoopSalads  = items.map((e,i) => {
+          if(e.categoryId == 2)
+          return (
+            <Col sm="4">
+            <Product 
+              key={i}
+              i={i}
+              name={e.name}
+              price={e.price}
+              description={e.description}
+              catId={e.categoryId}
+              img={e.productImage}
+              id={e._id}
+              />  
+              </Col>
+           )})
+
+           let instanceLoopSandwitch  = items.map((e,i) => {
+            if(e.categoryId == 3)
             return (
               <Col sm="4">
               <Product 
@@ -86,8 +91,8 @@ class Menu extends Component {
                 />  
                 </Col>
              )})
-             let instanceLoopBar  = items.map((e,i) => {
-              if(e.categoryId === 6)
+             let instanceLoopDesert  = items.map((e,i) => {
+              if(e.categoryId == 4)
               return (
                 <Col sm="4">
                 <Product 
@@ -103,13 +108,46 @@ class Menu extends Component {
                   </Col>
                )})
 
-        //Render item to screen + link button to form field
+             let instanceLoopBar  = items.map((e,i) => {
+              if(e.categoryId == 5)
+              return (
+                <Col sm="4">
+                <Product 
+                  key={i}
+                  i={i}
+                  name={e.name}
+                  price={e.price}
+                  description={e.description}
+                  catId={e.categoryId}
+                  img={e.productImage}
+                  id={e._id}
+                  />  
+                  </Col>
+               )})
+        
          return (
+
         <div>
-            <Container className="container">
+          <aside>
+            <div className="inner">
+              <ul id="menu">
+              <li><AnchorLink className="text" href='#soup'><Button outline color="secondary">Soup</Button></AnchorLink><span></span></li>
+
+              <li><AnchorLink className="text" href='#salad'><Button outline color="secondary">Salad</Button></AnchorLink><span></span></li>
+
+              <li><AnchorLink className="text" href='#sandwitch'><Button outline color="secondary">Sandwitch</Button></AnchorLink></li>
+
+              <li><AnchorLink className="text" href='#deserts'><Button outline color="secondary">Deserts</Button></AnchorLink><span></span></li>
+
+              <li><AnchorLink className="text" href='#bar'><Button outline color="secondary">Bar</Button></AnchorLink><span></span></li>
+              </ul>
+            </div>
+          </aside>
+
+             <Container className="container">
                 <Row>
                     <Col >
-                        <Media className="content wow fadeInLeft " data-wow-duration="2s"   body align="middle">
+                        <Media id="back2Top" className="content wow fadeInLeft" data-wow-duration="2s"   body align="middle">
                             <h4 heading className="pretty">Menu</h4>
                             <p>
                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
@@ -118,44 +156,63 @@ class Menu extends Component {
                                 fringilla. Donec lacinia congue felis in faucibus.
                             </p>
                             <br/>
-                            <AnchorLink href='#starters'><Button outline color="secondary">Starters</Button></AnchorLink>
-                            <AnchorLink href='#lunch'><Button outline color="secondary">Lunch</Button></AnchorLink>
-                            <AnchorLink href='#bar'><Button outline color="secondary">Bar</Button></AnchorLink>
+                            <div >
+                                <AnchorLink href='#soup'><Button outline color="secondary">Soup</Button></AnchorLink>
+
+                                <AnchorLink href='#salad'><Button outline color="secondary">Salad</Button></AnchorLink>
+
+                                <AnchorLink href='#sandwitch'><Button outline color="secondary">Sandwitch</Button></AnchorLink>
+
+                                <AnchorLink href='#deserts'><Button outline color="secondary">Deserts</Button></AnchorLink>
+                                
+                                <AnchorLink href='#bar'><Button outline color="secondary">Bar</Button></AnchorLink>
+                            </div>
                         </Media>
                     </Col>
                      <Col > 
                         <Media className="content wow fadeInRight " data-wow-duration="2s">
                         <video style={{ width:'100%',height:'100%'}} src={vedio} autoPlay='true' loop="true"></video>
-                            {/* <img className=" img-fluid" style={{ width:'100%',height:'100vh '}} src={vedio.mp4} alt="Food" /> */}
                         </Media>
                      </Col>
                 </Row> 
             </Container>
 
-            <Container id='starters' fluid>
-                <Row  className="products"> 
-                    {instanceLoopStarters}
+
+            <Container id='soup' fluid>
+                <h1 className="soup">Soups</h1>
+                <Row  className="products">   
+                  {instanceLoopSoup}
                 </Row>
             </Container>
 
-            <Container id='lunch' fluid>
+            <Container id='salad' fluid>
+            <h1 className="soup">Salads</h1>
                 <Row  className="products">   
-                  {instanceLoopLunch}
+                  {instanceLoopSalads}
+                </Row>
+            </Container>
+
+            <Container id='sandwitch' fluid>
+            <h1 className="soup">Sandwitches</h1>
+                <Row  className="products">   
+                  {instanceLoopSandwitch}
                 </Row>
             </Container>
 
             <Container id='desert' fluid>
+            <h1 className="soup">Desert</h1>
               <Row  className="products">
                 {instanceLoopDesert}
               </Row>
             </Container>
 
             <Container id='bar' fluid>
+            <h1 className="soup">Bar</h1>
               <Row  className="products">
                 {instanceLoopBar}
               </Row>
             </Container>
-            
+
         </div>)
     }
 }

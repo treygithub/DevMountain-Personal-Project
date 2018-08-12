@@ -26,10 +26,10 @@ console.log(id)
   return (
     <div>
       <Card id={id} className="deck">
-        <CardImg top src={img} width="100%" height="100%"  alt="Card image cap" />
+        <CardImg id="card-img"top src={img}  alt="Card image cap" />
         <CardBody>
             <CardTitle> {name}</CardTitle>
-            <CardSubtitle> {price}</CardSubtitle>
+            <CardSubtitle>Price: {price}</CardSubtitle>
             <CardText>{description}</CardText>
             <ButtonToolbar>
                 <ButtonGroup>

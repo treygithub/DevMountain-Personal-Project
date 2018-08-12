@@ -3,7 +3,6 @@ import AdminProduct from './AdminProduct';
 import axios from 'axios';
 import {Col, Container, Row} from 'reactstrap';
 
-
 class AdminMenu extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +31,7 @@ class AdminMenu extends Component {
         });
       })
     }
+
     //map over state and pass props to child
     render() {
       let {items} = this.state

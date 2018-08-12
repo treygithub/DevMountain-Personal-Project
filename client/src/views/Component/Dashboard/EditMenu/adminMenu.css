@@ -1,0 +1,14 @@
+.deck{
+    box-sizing: border-box;
+    min-height: 320px;
+    max-width: 228px;
+    min-width: 228px;
+    max-height: 320px
+ }
+ #card-img{
+     box-sizing: border-box;
+     min-height: 150px;
+     max-width: 228px;
+     min-width: 228px;
+     max-height: 150px
+ }

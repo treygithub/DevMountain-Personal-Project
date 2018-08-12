@@ -10,9 +10,6 @@ import WOW from 'wowjs';
 import {connect} from "react-redux";
 import {getSections} from "../../../ducks/reducers/websiteReducer";
 import { withRouter } from 'react-router';
-
-
-
  
 class Home extends Component {
     constructor(props){

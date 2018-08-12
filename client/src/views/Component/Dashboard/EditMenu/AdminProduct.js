@@ -2,13 +2,14 @@ import React from 'react';
 import DeleteProductBTN from './DeleteProductsBTN'
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button, ButtonGroup, ButtonToolbar } from 'reactstrap';
+  import './adminMenu.css';
 
 
 const AdminProduct = (props) => {
   return (
     <div>
       <Card className="deck">
-        <CardImg top src={props.img} width="100%"  alt="Card image cap" />
+        <CardImg id="card-img" top src={props.img} width="100%"  alt="Card image cap" />
         <CardBody>
           <CardTitle> {props.name}</CardTitle>
           <CardSubtitle> {props.price}</CardSubtitle>

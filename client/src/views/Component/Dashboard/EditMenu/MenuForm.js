@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Media } from 'reactstrap';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 // import { postNewProduct } from '../../../../ducks/actions/productActions';
 // import { addProduct } from "../../../../ducks/reducers/newProductReducer"
 import  { withRouter } from 'react-router-dom';
@@ -19,11 +19,20 @@ class MenuForm extends Component {
       productImage:''
     }
     this.onChange1=this.onChange1.bind(this);
+    this.onchange2=this.onchange2.bind(this);
     this.addProduct=this.addProduct.bind(this);
 }
 
 onChange1(e){
+  // console.log('cat', this.state.categoryId)
   this.setState({[e.target.name]: e.target.value});
+}
+onchange2(val){
+  console.log('category val selected is ' + val)
+    
+  this.setState({
+    categoryId: val
+  })
 }
 
 addProduct = async(e) => {
@@ -36,16 +45,8 @@ addProduct = async(e) => {
   data.append('description', description);
   data.append('categoryId', categoryId);
   data.append('productImage', productImage);
-  // console.log("i posted")
   const response = await axios.post("/api/product", data)
 }
-
-// addProduct async (){
-//   const { name, price, description, categoryId, productImage} = this.state;
-//   console.log(this.state.productImage);
-//   // this.props.addProduct( name, price, description, categoryId, productImage);
-//   const response = await axios.post("/api/product", { name, price, description, categoryId, productImage})
-// }
 
 formatFilename = (filename) => {
   const date = moment().format('YYYYMMDD');
@@ -57,27 +58,13 @@ formatFilename = (filename) => {
   return newFilename.substring(0, 60);
 };
 
-// onImageChange = (e) => {
-//   const val = e.target.value;
-//   const newVal = this.formatFilename(val)
-//   this.setState({productImage: newVal.toString()})
-// }
-
 onFileDrop = (file) => {
-  // console.log(file[0].preview)
-  // const newImg = this.formatFilename(file);
   this.setState({productImage: file[0]});
-  // console.log(this.state.productImage);
   console.log(this.state.productImage);
 }
 
   render() {
-    // console.log(this.state.productImage)
-
-    // console.log(this.state.productImage)
-    // console.log(this.props)
-
-    // const {getProducts} = this.props
+    console.log( 'category state is ' + this.state.categoryId)
     return (
       <Form type="multipart/form-data" onSubmit={this.addProduct} className="container" style={{maxWidth:600}}>
         <FormGroup>
@@ -94,55 +81,45 @@ onFileDrop = (file) => {
 
         <FormGroup>
           <Label for="itemPrice"></Label>
-          <Input type="number" 
-          name="price" 
-          id="itemPrice" 
-          placeholder="Enter Dollar amount" 
-          value={this.state.price}
-          onChange={this.onChange1}
-          />
+            <Input type="number" 
+            name="price" 
+            id="itemPrice" 
+            placeholder="Enter Dollar amount" 
+            value={this.state.price}
+            onChange={this.onChange1}
+            />
         </FormGroup>
 
-        <FormGroup>
-          <Label for="SelectCategory">Select Menu Category</Label>
-          <Input type="select" 
-          name="categoryId" 
-          id="SelectCategory" 
-          value={this.state.categoryId}
-          onChange={this.onChange1}>
-            <option>Starters</option>
-            <option>Soup</option>
-            <option>Salad</option>
-            <option>Sandwiches</option>
-            <option>Burgers</option>
-          </Input>
-        </FormGroup>
-
+        
+        
+            <select
+            type="select"
+            value={this.onchange2.val}
+            onChange={(e) => this.onchange2(e.target.value)}>
+              <option name="categoryId" value="1">Soup</option>
+              <option name="categoryId" value="2">Salad</option>
+              <option name="categoryId" value="3">Sandwitch</option>
+              <option name="categoryId" value="4">Deserts</option>
+              <option name="categoryId" value="5">Bar</option>
+            </select>
+        
         <FormGroup>
           <Label for="description">Description Area</Label>
-          <Input type="textarea" 
-          name="description" 
-          id="description" 
-          placeholder="Optional...." 
-          value={this.state.description}
-          onChange={this.onChange1}
-          />
+            <Input type="textarea" 
+            name="description" 
+            id="description" 
+            placeholder="Optional...." 
+            value={this.state.description}
+            onChange={this.onChange1}
+            />
         </FormGroup>
 
         <FormGroup>
-          <Label for="file">File</Label>
-          {/* <Input 
-            value={this.state.productImage}
-            onChange={this.onChange1}
-            type="file" 
-            name="productImage" 
-            id="File" 
-            className="File"
-            /> */}
-            <Dropzone id="file" onDrop={this.onFileDrop} />
-          <FormText color="muted">
-            Picture and Description fields are optional, however every item must have a name, price and Category.
-          </FormText>
+            <Label for="file">File</Label>
+              <Dropzone id="file" onDrop={this.onFileDrop} />
+            <FormText color="muted">
+              Picture and Description fields are optional, however every item must have a name, price and Category.
+            </FormText>
         </FormGroup>
      
         <Button onClick = {this.addProduct} type="submit">Submit</Button>

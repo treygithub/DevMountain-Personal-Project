@@ -41,7 +41,7 @@ return(
             <td> 
               <DeleteAdminBTN id={e._id} getCurrentAdmin={this.getCurrentAdmin}
               /> 
-              </td>
+            </td>
           </tr>
         </tbody>
     </Table>

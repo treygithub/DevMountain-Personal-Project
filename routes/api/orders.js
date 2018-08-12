@@ -41,14 +41,14 @@ router.get("/",
 //POST Add to cart
 router.post("/:id", (req, res, next) => {
 
-  console.log('session: ', req.session)
-  console.log('sessionId: ', req.sessionId)
-  console.log('session: ', req.session)
+  // console.log('session: ', req.session)
+  // console.log('sessionId: ', req.sessionId)
+  // console.log('session: ', req.session)
   // let {productId} = cart[0]
   // console.log('LINE 41',Order)
   Order.find({userId: req.sessionID})
     .then( ([order]) => {
-      console.log("Line 42", order)
+      // console.log("Line 42", order)
       // console.log(order[0].cart)
 
       // let product = order.find(p =>{
@@ -59,7 +59,7 @@ router.post("/:id", (req, res, next) => {
       //     console.log("FOUND PRODUCT", product.cart[0].quantity);
       // }
       if (!order) {
-        console.log('req.sessionID', req.sessionID)
+        // console.log('req.sessionID', req.sessionID)
         const order = new Order({
           _id: mongoose.Types.ObjectId(),
           userId: req.sessionID,
@@ -72,9 +72,30 @@ router.post("/:id", (req, res, next) => {
         // loop through order.cart looking req.params.id to match order.cart[i].product
         // if match found, increase quantity, isinCart = true;
         // after complete check isInCart, if false, add to cart.
+        // console.log(order.cart[0].quantity)
+        // Order.update({_id:req.params.id}, {
+        //   quantity: quantity + 1 
+        // },  function(err, affected, resp) {
+        //   console.log(resp))
+        // console.log(order);
+        
+        //   Order.findByIdAndUpdate({_id: "5b6fa3d4a6174843e4036013"}, {
+        //     quantity: 2
+        // }, function(err, affected, resp) {
+        //    console.log(resp);
+        // })
+
+        // order.cart
+        Order.findByIdAndUpdate({_id:"5b6fa3d4a6174843e4036013"}, {$set: {quantity: 2}})
         return order.save().then((order)=>{res.json(order)})
 
       }
+
+      // Website.findByIdAndUpdate({_id:req.params.id}, { $set: { title: req.body.title, body: req.body.body,titleColor:req.body.titleColor,bodyColor:req.body.bodyColor,image:req.body.image, currentSide:req.body.currentSide }}).then(function(){
+      //   Website.findOne({_id:req.params.id}).then(function(website){
+      //       res.send(website);
+      // //   })
+      // })
       
     })
     .catch(err => {
