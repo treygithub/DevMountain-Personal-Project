@@ -15,8 +15,8 @@ class FooterGoogleMap extends Component {
                     <iframe
                     width="350"
                     height="250"
-                    frameborder="0" style={{border:0}}
-                    src={url} allowfullscreen>
+                    frameBorder="0" style={{border:0}}
+                    src={url} allowFullScreen>
                     </iframe>
 
                 </footer>

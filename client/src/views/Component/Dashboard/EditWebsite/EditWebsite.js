@@ -5,10 +5,9 @@ import moment from 'moment';
 import Dropzone from 'react-dropzone';
 import { SliderPicker } from 'react-color';
 import FontPicker from 'font-picker-react';
-import WOW from 'wowjs';
 
 import {connect} from "react-redux"
-import {addSection, editSection} from "../../../../ducks/reducers/websiteReducer";
+import {addSection, editSection, getSections} from "../../../../ducks/reducers/websiteReducer";
 
  class EditWebsite extends Component {
    constructor(){
@@ -22,7 +21,8 @@ import {addSection, editSection} from "../../../../ducks/reducers/websiteReducer
        currentId: 0,
        currentSide: "right",
        image : [],
-       activeFont: 'Open Sans'
+       activeFont: 'Open Sans',
+       sections:[]
      }
      this.onChange3=this.onChange3.bind(this);
      this.patchReq=this.patchReq.bind(this);
@@ -30,8 +30,9 @@ import {addSection, editSection} from "../../../../ducks/reducers/websiteReducer
      this.updateSide=this.updateSide.bind(this);
    }
    componentDidMount() {
-     
-  
+    this.props.getSections();
+    this.updateCurrentId();
+
   }
    onChangeComplete = (color, e) => {
     e.preventDefault();
@@ -82,10 +83,7 @@ onFileDrop = (file) => {
 }
 
   render() {
-    // console.log(this.props)
-    // console.log(this.state)
-    // console.log(this.state.bodyColor)
-    // his.state.image.preview;
+ console.log(this.state.activeFont)
     let { sections } = this.props.website
     
     return (
@@ -102,7 +100,7 @@ onFileDrop = (file) => {
                  className="textArea apply-font"
                  type="textarea"
                  name="title"
-                //  id="title"
+                  id="title"
                  value={this.state.title}
                  onChange={this.onChange3}
                  />
@@ -125,8 +123,6 @@ onFileDrop = (file) => {
         <FormGroup>
             <Label for="font-picker">Font Style</Label>
             <FontPicker
-              name="main"
-              id="main"
               apiKey="AIzaSyDduSTYqkuEnzTlov7DNzmM0G2SNwk34hs"
               activeFont={this.state.activeFont}
               onChange={nextFont => this.setState({ activeFont: nextFont.family })}
@@ -139,10 +135,9 @@ onFileDrop = (file) => {
                 <Label  for="body">Media Body</Label>
                 <Input 
                 style={{color:this.state.bodyColor}}
-                className="textArea apply-font" 
+                className="textArea " 
                 type="textarea" 
                 name="body" 
-                id="body"
                 value={this.state.body}
                 onChange={this.onChange3} 
                 />
@@ -162,17 +157,19 @@ onFileDrop = (file) => {
             </Media>
           </Col>
         </Row>
-        <FormGroup>
-            <Label for="font-picker">Font Style</Label>
+        {/* <FormGroup>
+            <Label for="font-picker-main">Font Style</Label>
             <FontPicker
-              apiKey="AIzaSyAXquiSVreKI4iL_bdzKaELjGOzurrkKJE"
+              // id="font-picker-main"
+              name='main'
+              apiKey=""
               activeFont={this.state.activeFont}
               onChange={nextFont => this.setState({ activeFont: nextFont.family })}
             />
-        </FormGroup>
+        </FormGroup> */}
 
         <FormGroup>
-          <Label for="fileUpLoad">Main Image</Label>
+          <Label for="fileUpLoad">Main Image Preview</Label>
             <Dropzone id="fileUpLoad" onDrop={this.onFileDrop}>
               <img style={{width: '199px', height: '198px'}} src={this.state.image.preview && this.state.image.preview} />
             </Dropzone>
@@ -181,18 +178,23 @@ onFileDrop = (file) => {
           </FormText>
         </FormGroup>
         
-        <select onChange={(e) => this.updateCurrentId(e.target.value)}>
+        <Label for="selectId">Select Section to Update</Label>
+        <select id="selectId" onChange={(e) => this.updateCurrentId(e.target.value)}>
         {sections.map((e, i) => {
           return (
               <option value={e._id}>{`Section ${i + 1}`}</option>
             )
           })}
         </select>
-        <select onChange={(e) => this.updateSide(e.target.value)}>
+        <br />
+
+        <Label for="locationSelector">Select Location of Content</Label>
+        <select id="locationSelector" onChange={(e) => this.updateSide(e.target.value)}>
           <option value="right">Right</option>
           <option value="left">Left</option>
         </select>
-        < Button onClick = {this.editSection} type="submit">Submit</Button>
+        <br/>
+        < Button outline onClick = {this.editSection} type="submit">Submit</Button>
       </Form>
       </Container>
                 
@@ -202,4 +204,4 @@ onFileDrop = (file) => {
 
  let mapStateToProps = state => state;
 
-export default  connect(mapStateToProps, {addSection, editSection})(EditWebsite);
+export default  connect(mapStateToProps, {addSection, editSection, getSections})(EditWebsite);

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import bbq from './bbq.mp4';
 import './JumboTron.css'
-import Svg from '../Svg/Svg'
+// import Svg from '../Svg/Svg'
+import BeerSvg from '../Svg/BeerSvg'
 
 class JumboTron extends Component  {
     constructor (){
@@ -17,7 +18,8 @@ render(){
             <header className="wrapper">
                 <video src={bbq} autoPlay='true' loop="true"></video>
                 <div className="svg-wrapper">
-                    <Svg/>
+                    {/* <Svg/> */}
+                    <BeerSvg/>
                  </div>
             </header>
         </div>

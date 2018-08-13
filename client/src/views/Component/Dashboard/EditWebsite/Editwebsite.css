@@ -26,3 +26,13 @@ body,html{
 .colorBox{
     margin-top:40%;
 }
+#locationSelector{
+    margin:4px;
+    padding:4px;
+    margin-bottom:10px
+}
+#selectId{
+    margin:4px;
+        padding:4px;
+        margin-bottom:10px
+}
