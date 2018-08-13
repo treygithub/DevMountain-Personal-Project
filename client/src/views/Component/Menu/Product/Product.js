@@ -29,7 +29,7 @@ console.log(id)
         <CardImg id="card-img"top src={img}  alt="Card image cap" />
         <CardBody>
             <CardTitle> {name}</CardTitle>
-            <CardSubtitle>Price: {price}</CardSubtitle>
+            <CardSubtitle>Price: ${price}</CardSubtitle>
             <CardText>{description}</CardText>
             <ButtonToolbar>
                 <ButtonGroup>

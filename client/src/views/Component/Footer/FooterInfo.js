@@ -8,8 +8,8 @@ class FooterInfo extends Component {
   render(){  
   return (
     
-                <div>
-                    <h6 className="heading7">About Me</h6>
+                <div style={{marginTop:40}}>
+                   
                     <p>
                         <Link to="#" >NewJack Web Dev</Link> is a website development company from USA, Florida. I builds interactive, astonishing, responsive, and feature rich responsive website solutions.
                     </p>

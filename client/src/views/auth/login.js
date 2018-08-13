@@ -54,7 +54,7 @@ class Login extends Component {
 
   return (
 
-<Container className="skoal" fluid>
+<Container className="skoal " fluid>
     <Form onSubmit={this.onSubmit}>
         <h1 className="display-4 text-center">Sign In</h1>
         <p className="lead text-center">Log into your Administration account</p>
@@ -98,6 +98,7 @@ class Login extends Component {
         </FormGroup>
     </Form>
 </Container>
+
   )
 }
 }

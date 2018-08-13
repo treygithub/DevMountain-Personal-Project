@@ -26,10 +26,12 @@ import {addSection, editSection} from "../../../../ducks/reducers/websiteReducer
      }
      this.onChange3=this.onChange3.bind(this);
      this.patchReq=this.patchReq.bind(this);
+     this.updateCurrentId=this.updateCurrentId.bind(this);
+     this.updateSide=this.updateSide.bind(this);
    }
    componentDidMount() {
-    const wow = new WOW.WOW();
-    wow.init();
+     
+  
   }
    onChangeComplete = (color, e) => {
     e.preventDefault();
@@ -168,6 +170,7 @@ onFileDrop = (file) => {
               onChange={nextFont => this.setState({ activeFont: nextFont.family })}
             />
         </FormGroup>
+
         <FormGroup>
           <Label for="fileUpLoad">Main Image</Label>
             <Dropzone id="fileUpLoad" onDrop={this.onFileDrop}>
@@ -177,6 +180,7 @@ onFileDrop = (file) => {
             Picture and Description fields are optional, however every item must have a name, price and Category.
           </FormText>
         </FormGroup>
+        
         <select onChange={(e) => this.updateCurrentId(e.target.value)}>
         {sections.map((e, i) => {
           return (
