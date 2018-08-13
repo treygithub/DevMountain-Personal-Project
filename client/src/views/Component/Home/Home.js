@@ -5,6 +5,7 @@ import {Button, Media, Row, Container, Col} from 'reactstrap';
 import Mosaic from '../Mosaic/Mosaic';
 import JumboTron from '../JumboTron/JumboTron';
 import WOW from 'wowjs';
+import { Link } from 'react-router-dom';
 // import Svg from './svg';
 
 import {connect} from "react-redux";
@@ -47,12 +48,14 @@ class Home extends Component {
                                             {e.body}
                                             </p>
                                             <br/>
-                                            <Button outline color="secondary">View Menu</Button>
+                                            <Link to="Menu">
+                                            <Button outline color="secondary">Find Out More</Button>
+                                            </Link>
                                         </Media>
                                     </Col>
                                     <Col >   
                                         <Media>
-                                            <img className=" img-fluid" style={{ width:'100%',height:'100vh '}} src={burger} alt="Food" />
+                                            <img className=" img-fluid" style={{ width:'100%',height:'100vh '}} src={e.image} alt="Food" />
                                         </Media>
                                     </Col> 
                                 </Row>
@@ -67,7 +70,7 @@ class Home extends Component {
                          <Row>
                              <Col  >
                                  <Media >
-                                     <img style={{ width:'100%',height:'100vh'}} src={burger} alt="Food" />
+                                     <img style={{ width:'100%',height:'100vh'}} src={e.image} alt="Food" />
                                 </Media>
                                 </Col>
                                  <Col  >   
@@ -77,7 +80,9 @@ class Home extends Component {
                                       {e.body}
                                      </p>                        
                                      <br/>
-                                     <Button outline color="secondary">View Menu</Button>
+                                     <Link to="about">
+                                     <Button outline color="secondary">Find Out More</Button>
+                                     </Link>
                                 </Media>
                             </Col>   
                         </Row>

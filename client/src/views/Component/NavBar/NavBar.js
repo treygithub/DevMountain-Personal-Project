@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import './NavBar.css';
+import Svg from '../About/About'
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -23,11 +24,10 @@ export default class NavBar extends Component {
     
     return (
       <div>
-        
         <Navbar navbar  color="faded" light >
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-            <NavbarBrand  className="align-center">Buttler Brothers</NavbarBrand>  
-              <NavbarBrand href="/" className="align-right"><Button outline color="secondary">Make Reservations</Button></NavbarBrand>          
+            <NavbarBrand  className="align-center styleMe">Bar-N-Grill</NavbarBrand>
+              <NavbarBrand href="/" className="align-right"><Button outline color="secondary">Make Reservations</Button></NavbarBrand>      
               <Collapse isOpen={!this.state.collapsed} navbar>
                 <Nav className="align-left navStuff"  navbar>
                   <NavItem >

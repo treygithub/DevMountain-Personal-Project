@@ -5,3 +5,8 @@
 .navStuff:hover{
     color:gray;
 }
+.styleMe{
+    font-size: 2rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 4px 4px 4px #aaa;
+}

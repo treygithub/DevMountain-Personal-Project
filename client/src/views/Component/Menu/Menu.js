@@ -152,10 +152,7 @@ class Menu extends Component {
                         <Media id="Home" className="content wow fadeInLeft" data-wow-duration="2s"   body align="middle">
                             <h4 heading className="pretty">Menu</h4>
                             <p>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
-                                tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                                fringilla. Donec lacinia congue felis in faucibus.
+                            A progression of rare and beautiful ingredients where texture, fla.vour and harmony is paramount. Delve further into Quay’s reimagination with Peter Gilmore’s Ten Course Tasting Menu and thoughtfully curated Wine List by Wine Director Amanda Yallop
                             </p>
                             <br/>
                             <div >

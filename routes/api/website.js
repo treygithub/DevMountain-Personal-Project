@@ -74,6 +74,31 @@ router.post("/", upload.single('image'), (req, res, next) => {
     });
 });
 
+router.post("/update", upload.single('image'), (req, res, next) => {
+  console.log("hit post")
+  const website = new Website({
+    _id: new mongoose.Types.ObjectId(),
+    title: req.body.title,
+    titleColor: req.body.titleColor,
+    body: req.body.body,
+    bodyColor: req.body.bodyColor,
+    image: req.file.path,
+    currentSide: req.body.currentSide
+
+  });
+  website
+    .save()
+    .then(result => {
+      res.status(201).json([result]);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({
+        error: err
+      });
+    });
+});
+
   router.put("/edit/:id", function (req, res, next){
     console.log("hit put")
     console.log(req.params)

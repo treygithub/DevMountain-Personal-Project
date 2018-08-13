@@ -1,14 +1,26 @@
 import React, {Component} from 'react';
-import './Footer.css'
+import FooterGoogleMap from './footerGoogleMap'
+import FooterSubscribe from './FooterSubscribe'
+import FooterInfo from './FooterInfo'
+import { Media, Row, Container, Col} from 'reactstrap';
 
 
 class Footer extends Component {
     render(){
         return(
             <div>
-                <footer className=" footer mt-5 p-4 text-center">
-                    Copyright &copy; {new Date().getFullYear()}
-                </footer>
+                
+                <Container fluid>
+                    <Row>
+                        <Col style={{backgroundColor:'whitesmoke'}}>
+                            <Media>
+                            <FooterInfo/>
+                            <FooterGoogleMap/>
+                            <FooterSubscribe/>
+                            </Media>  
+                        </Col> 
+                    </Row>
+                </Container>
             </div>
         );
     }
