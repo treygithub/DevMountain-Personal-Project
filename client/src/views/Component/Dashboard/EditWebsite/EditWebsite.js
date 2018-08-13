@@ -51,16 +51,16 @@ onChange3(e){
 patchReq = async(e) => {
  e.preventDefault();
 //  console.log(this.state)
- const {title,titleColor,body,bodyColor,image,currentSide } = this.state;
+ const {title,titleColor,body,bodyColor,image,currentSide,activeFont } = this.state;
 
- await this.props.addSection(title,titleColor,body,bodyColor,image,currentSide)
+ await this.props.addSection(title,titleColor,body,bodyColor,image,currentSide,activeFont)
 }
 
 editSection = () => {
   // console.log(this.state)
-  const {title,titleColor,body,bodyColor,image, currentId,currentSide } = this.state;
+  const {title,titleColor,body,bodyColor,image, currentId,currentSide,activeFont } = this.state;
   // console.log(title,titleColor,body,bodyColor,image, currentId,currentSide)
-  this.props.editSection(currentId, title,titleColor,body,bodyColor,image,currentSide)
+  this.props.editSection(currentId, title,titleColor,body,bodyColor,image,currentSide,activeFont)
 }
 
 updateCurrentId(val){

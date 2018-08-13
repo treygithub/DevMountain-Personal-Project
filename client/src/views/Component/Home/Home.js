@@ -43,7 +43,7 @@ class Home extends Component {
                                 <Row>
                                     <Col >
                                         <Media className="content wow fadeInUp " data-wow-duration="2s" data-wow-offset="300"  body align="middle">
-                                            <h4 style={{color: e.titleColor}} heading className="pretty">{e.title}</h4>
+                                            <h4 style={{color: e.titleColor, fontFamily:e.activeFont}} heading className="pretty">{e.title}</h4>
                                             <p style={{color: e.bodyColor}}>
                                             {e.body}
                                             </p>

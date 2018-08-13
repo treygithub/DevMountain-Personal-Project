@@ -25,6 +25,10 @@ const productSchema = mongoose.Schema({
     currentSide:{
         type:String,
         required: false
+    },
+    activeFont:{
+        Type:String,
+        required:false
     }
 });
 

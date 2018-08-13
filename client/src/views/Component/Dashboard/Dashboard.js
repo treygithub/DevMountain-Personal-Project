@@ -29,12 +29,13 @@ getCurrentAdmin(){
 }
 
 render(){
+  console.log(admin)
   let {admin} = this.state
 console.log(this.state)
  let instanceLooper  = admin.map((e,i) => {
 return(
   
-        <tbody key={i}>
+        <tbody key={i} i={i}>
           <tr>
             <th scope="row"></th>
             <td>{e.name}</td>
@@ -55,8 +56,7 @@ return(
       <div className="row">
         <div className="col-md-12">
           <h1 className="display-4">Admin Dashboard</h1>
-          <p className="lead text-muted">Welcome {admin.name ? admin.name : null}</p>
-
+           
           <div className="btn-group mb-4" role="group">
               <Link to="/EditWebsite" className="btn btn-light">
               <i className="fa fa-desktop" aria-hidden="true"></i> Edit Website</Link>
