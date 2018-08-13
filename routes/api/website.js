@@ -82,7 +82,7 @@ router.post("/update", upload.single('image'), (req, res, next) => {
     titleColor: req.body.titleColor,
     body: req.body.body,
     bodyColor: req.body.bodyColor,
-    image: req.file.path,
+    productImage: req.file.path,
     currentSide: req.body.currentSide,
     activeFont:req.body.activeFont
 
@@ -100,9 +100,9 @@ router.post("/update", upload.single('image'), (req, res, next) => {
     });
 });
 
-  router.put("/edit/:id",upload.single('image'), function (req, res, next){
+  router.put("/edit/:id", function (req, res, next){
 
-    Website.findByIdAndUpdate({_id:req.params.id}, { $set: { title: req.body.title, body: req.body.body,titleColor:req.body.titleColor,bodyColor:req.body.bodyColor,image:req.body.image, currentSide:req.body.currentSide, activeFont:req.body.activeFont }})
+    Website.findByIdAndUpdate({_id:req.params.id}, { $set: { title: req.body.title, body: req.body.body,titleColor:req.body.titleColor,bodyColor:req.body.bodyColor, currentSide:req.body.currentSide, activeFont:req.body.activeFont }})
     .then(function(){
       Website.findOne({_id:req.params.id}).then(function(website){
           res.send(website);

@@ -15,17 +15,17 @@ export function getSections() {
     }
 }
 
-export function addSection(title,titleColor,body,bodyColor,image,currentSide,activeFont) {
+export function addSection(title,titleColor,body,bodyColor,productImage,currentSide,activeFont,data) {
     return {
         type: ADD_SECTION,
-        payload: axios.post(`/api/website/`, {title,titleColor,body,bodyColor,image,currentSide,activeFont})
+        payload: axios.post(`/api/website/`, {title,titleColor,body,bodyColor,productImage,currentSide,activeFont,data})
     }
 }
 
-export function editSection(id, title,titleColor,body,bodyColor,image,currentSide,activeFont){
+export function editSection(id, title,titleColor,body,bodyColor,productImage,currentSide,activeFont,data){
     return {
         type: EDIT_SECTION,
-        payload: axios.put(`/api/website/edit/${id}`, {title,titleColor,body,bodyColor,image,currentSide,activeFont})
+        payload: axios.put(`/api/website/edit/${id}`, {title,titleColor,body,bodyColor,productImage,currentSide,activeFont,data})
     }
 }
 

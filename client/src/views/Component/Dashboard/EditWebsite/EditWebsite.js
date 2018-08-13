@@ -20,7 +20,7 @@ import {addSection, editSection, getSections} from "../../../../ducks/reducers/w
        bodyColor:'#face',
        currentId: 0,
        currentSide: "right",
-       image : [],
+       productImage : [],
        activeFont: 'Open Sans',
        sections:[]
      }
@@ -51,16 +51,16 @@ onChange3(e){
 patchReq = async(e) => {
  e.preventDefault();
 //  console.log(this.state)
- const {title,titleColor,body,bodyColor,image,currentSide,activeFont } = this.state;
+ const {title,titleColor,body,bodyColor,productImage,currentSide,activeFont,data } = this.state;
 
- await this.props.addSection(title,titleColor,body,bodyColor,image,currentSide,activeFont)
+ await this.props.addSection(title,titleColor,body,bodyColor,productImage,currentSide,activeFont,data)
 }
 
 editSection = () => {
   // console.log(this.state)
-  const {title,titleColor,body,bodyColor,image, currentId,currentSide,activeFont } = this.state;
+  const {title,titleColor,body,bodyColor,productImage, currentId,currentSide,activeFont,data } = this.state;
   // console.log(title,titleColor,body,bodyColor,image, currentId,currentSide)
-  this.props.editSection(currentId, title,titleColor,body,bodyColor,image,currentSide,activeFont)
+  this.props.editSection(currentId, title,titleColor,body,bodyColor,productImage,currentSide,activeFont,data)
 }
 
 updateCurrentId(val){
@@ -75,12 +75,23 @@ updateSide(val){
     currentSide: val
   })
 }
-
-onFileDrop = (file) => {
-  // console.log(file)
-  this.setState({image: file[0]});
-  
+onFileDrop = async (file) => {
+  this.setState({productImage: file[0]});
+  console.log(this.state.productImage);
+  await this.addProduct();
 }
+
+addProduct = (e) => {
+ 
+  const { productImage} = this.state;
+  let data = new FormData();
+  data.append('file', document);
+  data.append('productImage', productImage);
+  
+  // const response = await axios.post("/api/product", data)
+}
+
+
 
   render() {
  console.log(this.state.activeFont)
@@ -171,7 +182,7 @@ onFileDrop = (file) => {
         <FormGroup>
           <Label for="fileUpLoad">Main Image Preview</Label>
             <Dropzone id="fileUpLoad" onDrop={this.onFileDrop}>
-              <img style={{width: '199px', height: '198px'}} src={this.state.image.preview && this.state.image.preview} />
+              <img style={{width: '199px', height: '198px'}} src={this.state.productImage.preview && this.state.productImage.preview} />
             </Dropzone>
           <FormText color="muted">
             Picture and Description fields are optional, however every item must have a name, price and Category.
