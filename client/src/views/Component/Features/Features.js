@@ -21,7 +21,7 @@ return(
 
                 <Row>
                     <Col >
-                        <Media className="content wow fadeInUp " data-wow-duration="2s" data-wow-offset="300" body align="middle">
+                        <Media className="content wow fadeInUp " data-wow-duration="2s" data-wow-offset="200" body align="middle">
                             <h4 heading className="pretty">Live Music Tuesday Nights</h4>
                             <p>
                                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque

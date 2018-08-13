@@ -8,10 +8,10 @@ class FooterInfo extends Component {
   render(){  
   return (
     
-                <div style={{marginTop:40}}>
+                <div className="container" style={{marginTop:40}}>
                    
                     <p>
-                        <Link to="#" >NewJack Web Dev</Link> is a website development company from USA, Florida. I builds interactive, astonishing, responsive, and feature rich responsive website solutions.
+                        <Link to="#" >NewJack Web Dev</Link> is a website development company from USA, Florida. I build interactive, astonishing, responsive, and feature rich website solutions.
                     </p>
                     <p itemProp="address"><i className="fa fa-map-pin"></i>
                         <span itemProp="addressLocality">Orlando</span>
@@ -22,7 +22,7 @@ class FooterInfo extends Component {
                     </p>
                     <p><i className="fa fa-phone"></i> Phone (USA) :
                         <span itemProp="telephone">
-                        <Link to="#" className="fields"                                          title="Contact Trey"> 352-409-4699</Link>
+                        <Link to="#" className="fields"                                          title="Contact Trey"> 305-999-9999</Link>
                         </span>
                     </p>
                     <p><i className="fa fa-envelope"></i> E-mail :

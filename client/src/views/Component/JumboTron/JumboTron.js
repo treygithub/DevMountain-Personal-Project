@@ -14,7 +14,7 @@ class JumboTron extends Component  {
 
 render(){
     return(
-        <div>
+        <div id="Home">
             <header className="wrapper">
                 <video src={bbq} autoPlay='true' loop="true"></video>
                 <div className="svg-wrapper">

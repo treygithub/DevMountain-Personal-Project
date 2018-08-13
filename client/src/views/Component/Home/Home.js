@@ -5,7 +5,7 @@ import Mosaic from '../Mosaic/Mosaic';
 import JumboTron from '../JumboTron/JumboTron';
 import WOW from 'wowjs';
 import { Link } from 'react-router-dom';
-// import Svg from './svg';
+import SideNav from '../SideNav/SideNav';
 
 import {connect} from "react-redux";
 import {getSections} from "../../../ducks/reducers/websiteReducer";
@@ -38,7 +38,8 @@ class Home extends Component {
                  if(e.currentSide === "right"){
                       return (
                         <div>
-                         <Container fluid>
+                         <Container id="menu" fluid>
+                         <SideNav/>
                                 <Row>
                                     <Col >
                                         <Media className="content wow fadeInUp " data-wow-duration="2s" data-wow-offset="300"  body align="middle">
@@ -65,7 +66,7 @@ class Home extends Component {
                       return (
 
                           <div key={e._id}>
-                    <Container fluid>
+                    <Container id="about" fluid>
                          <Row>
                              <Col  >
                                  <Media >
@@ -95,7 +96,7 @@ class Home extends Component {
         <div>
             <JumboTron /> 
             {allSections}            
-            <Mosaic/>   
+            <Mosaic id="info"/>   
         </div>
     )
 }

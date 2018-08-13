@@ -10,7 +10,7 @@ class Footer extends Component {
         return(
             <div>
                 
-                <Container fluid>
+                <Container id="footer" fluid>
                     <Row>
                         <Col style={{backgroundColor:'whitesmoke'}}>
                             <Media>
