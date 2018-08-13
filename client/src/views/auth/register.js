@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { registerAdmin} from '../../ducks/actions/authActions';
 import PropTypes from 'prop-types';
 import  { withRouter } from 'react-router-dom';
+import {Button, Media,Input, Row,FormGroup,Form, Container, Col} from 'reactstrap';
+import './login.css'
 
 class Register extends Component {
   constructor(){
@@ -45,18 +47,15 @@ class Register extends Component {
     const { admin } = this.props.auth
 
   return (
-    <div>
-      {admin ? admin.name : null}
-      <div className="register">
-    <div className="container">
-      <div className="row">
-        <div className="col-md-8 m-auto">
+    
+      
+     
+        <Container className="skoal" fluid>
+          <Form onSubmit={this.onSubmit}>
           <h1 className="display-4 text-center" id="target">Register</h1>
           <p className="lead text-center">Create a new Administrator account</p>
-
-          <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <input 
+            <FormGroup>
+              <Input 
                 type="text" 
                 className={classnames('form-control form-control-lg', {
                   'is-invalid': errors.name
@@ -67,9 +66,9 @@ class Register extends Component {
                 onChange={this.onChange} 
               />
               {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
-            </div>
-            <div className="form-group">
-              <input type="email"
+            </FormGroup>
+            <FormGroup>
+              <Input type="email"
                 className={classnames('form-control form-control-lg', {
                   'is-invalid': errors.email
                 })} 
@@ -79,9 +78,9 @@ class Register extends Component {
                 onChange={this.onChange}
               />
               {errors.email && (<div className="invalid-feedback">{errors.email}</div>)}
-            </div>
-            <div className="form-group">
-              <input type="password" 
+            </FormGroup>
+            <FormGroup>
+              <Input type="password" 
                 className={classnames('form-control form-control-lg', {
                   'is-invalid': errors.password
                 })} 
@@ -91,9 +90,9 @@ class Register extends Component {
                 onChange={this.onChange}
               />
               {errors.password && (<div className="invalid-feedback">{errors.password}</div>)}
-            </div>
-            <div className="form-group">
-              <input type="password"
+            </FormGroup>
+            <FormGroup>
+              <Input type="password"
                 className={classnames('form-control form-control-lg', {
                   'is-invalid': errors.password
                 })} 
@@ -103,15 +102,13 @@ class Register extends Component {
                 onChange={this.onChange}
               />
               {errors.password2 && (<div className="invalid-feedback">{errors.password2}</div>)}
-            </div>
-            <input type="submit" className="btn btn-info btn-block mt-4" />
-          </form>
+            </FormGroup>
+            <Button outline type="submit" className="btn ">Submit</Button>
+          </Form>
 
-        </div>
-      </div>
-    </div>
-  </div>
-    </div>
+        </Container>
+   
+  
   )
 }
 }

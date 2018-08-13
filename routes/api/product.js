@@ -53,8 +53,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", upload.single('productImage'), (req, res, next) => {
-  console.log(req.body)
-  console.log("hit")
+ 
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
@@ -75,6 +74,22 @@ router.post("/", upload.single('productImage'), (req, res, next) => {
         error: err
       });
     });
+});
+
+router.post("/update", upload.single('productImage'), (req, res, next) => {
+let id = req.body.params
+console.log('hit hit hit')
+Product.findById(id, function(err,doc){
+  if(err){
+    console.log('error found');
+  }
+  doc.name= req.body.name;
+  doc.price= req.body.price;
+  doc.description= req.body.description;
+  doc.categoryId= req.body.categoryId;
+  doc.productImage= req.file.path;
+  doc.save()
+})
 });
 
 router.get("/:productId", (req, res, next) => {

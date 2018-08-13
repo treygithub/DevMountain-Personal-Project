@@ -78,21 +78,7 @@ updateSide(val){
 onFileDrop = async (file) => {
   this.setState({productImage: file[0]});
   console.log(this.state.productImage);
-  await this.addProduct();
 }
-
-addProduct = (e) => {
- 
-  const { productImage} = this.state;
-  let data = new FormData();
-  data.append('file', document);
-  data.append('productImage', productImage);
-  
-  // const response = await axios.post("/api/product", data)
-}
-
-
-
   render() {
  console.log(this.state.activeFont)
     let { sections } = this.props.website
@@ -205,7 +191,8 @@ addProduct = (e) => {
           <option value="left">Left</option>
         </select>
         <br/>
-        < Button outline onClick = {this.editSection} type="submit">Submit</Button>
+        < Button outline onClick = {this.editSection} type="submit">Submit Edit</Button>
+        < Button outline onClick = {this.patchReq} type="submit">Add New Section</Button>
       </Form>
       </Container>
                 

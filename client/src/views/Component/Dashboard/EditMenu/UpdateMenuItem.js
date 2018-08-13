@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import { Button, Form, FormGroup, Label, Input, FormText, Media } from 'reactstrap';
-import moment from 'moment';
+import { Button, Form, FormGroup, Label, Input, Media, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Dropzone from 'react-dropzone'
 import axios from 'axios';
-import './menuform.css';
-import  { withRouter } from 'react-router-dom';
 
-class MenuForm extends Component {
+
+class UpdateMenuItem extends Component {
   constructor(props){
     super(props);
     this.state={
@@ -14,24 +12,35 @@ class MenuForm extends Component {
       price:'',
       description:'',
       categoryId:'',
-      productImage:''
+      productImage:'',
+      modal: false
     }
     this.onChange1=this.onChange1.bind(this);
     this.onchange2=this.onchange2.bind(this);
-    this.addProduct=this.addProduct.bind(this);
+    this.updateProduct=this.updateProduct.bind(this);
+    this.toggle = this.toggle.bind(this);
 }
 
+toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+
 onChange1(e){
+  console.log('this is e ', e)
   this.setState({[e.target.name]: e.target.value});
 }
-onchange2(val){
+onchange2(val){ 
+  console.log('this is val ', val)
   this.setState({
     categoryId: val
   })
 }
 
-addProduct = async(e) => {
+updateProduct = async(e) => {
   e.preventDefault();
+  
   const { name, price, description, categoryId, productImage} = this.state;
   let data = new FormData();
   data.append('file', document);
@@ -40,29 +49,26 @@ addProduct = async(e) => {
   data.append('description', description);
   data.append('categoryId', categoryId);
   data.append('productImage', productImage);
-  const response = await axios.post("/api/product", data)
+  const response = await axios.post(`/api/product/update`, data)
 }
 
-formatFilename = (filename) => {
-  const date = moment().format('YYYYMMDD');
-  const randomString = Math.random()
-    .toString(36)
-    .substring(2, 7);
-  const cleanFileName = filename[0].preview.toLowerCase().replace(/[^a-z0-9]/g, '-');
-  const newFilename = `${date}-${randomString}-${cleanFileName}`;
-  return newFilename.substring(0, 60);
-};
 
 onFileDrop = (file) => {
   this.setState({productImage: file[0]});
+  console.log(this.state.productImage);
 }
 
   render() {
-    console.log( 'category state is ' + this.state.categoryId)
+  
     return (
+        <div>
+        <Button color="danger" onClick={this.toggle}>Update</Button>
+        <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+          <ModalHeader toggle={this.toggle}>Update a Menu item</ModalHeader>
+          <ModalBody>
       <Form type="multipart/form-data" onSubmit={this.addProduct} className="container" style={{maxWidth:600}}>
         <FormGroup>
-          <Media className="header1" body align="middle">Create a new Menu item</Media>
+          
           <Label for="itemName">Item Name</Label>
           <Input type="text"
            name="name" 
@@ -113,15 +119,18 @@ onFileDrop = (file) => {
               <Dropzone id="file" onDrop={this.onFileDrop}  >
               <img style={{width: '199px', height: '198px'}} src={this.state.productImage.preview && this.state.productImage.preview} />
               </Dropzone>
-            <FormText color="muted">
-              Picture and Description fields are optional, however every item must have a name, price and Category.
-            </FormText>
         </FormGroup>
      
-        <Button onClick = {this.addProduct} type="submit">Submit</Button>
+        <Button  onClick={ () =>this.updateProduct(this.props.id)} type="submit">Submit</Button>
       </Form>
-    );
+      </ModalBody>
+          <ModalFooter>
+            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+          </ModalFooter>
+        </Modal>
+        </div>
+    )
   }
 }
 
-export default withRouter(MenuForm)
+export default UpdateMenuItem;

@@ -1,8 +1,9 @@
 import React from 'react';
 import DeleteProductBTN from './DeleteProductsBTN'
 import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button, ButtonGroup, ButtonToolbar } from 'reactstrap';
+  CardTitle, CardSubtitle, ButtonGroup, ButtonToolbar } from 'reactstrap';
   import './adminMenu.css';
+  import UpdateMenuItem from './UpdateMenuItem'
 
 
 const AdminProduct = (props) => {
@@ -16,12 +17,15 @@ const AdminProduct = (props) => {
           <CardText>{props.description}</CardText>
           <ButtonToolbar>
             <ButtonGroup>
+              <UpdateMenuItem
+              id={props.id}
+              />
               <DeleteProductBTN
               id={props.id}
               getProducts={props.getProducts}
               />
-            </ButtonGroup> 
-          </ButtonToolbar>  
+            </ButtonGroup>
+          </ButtonToolbar>
         </CardBody>
       </Card>
     </div>
