@@ -50,7 +50,7 @@ router.post('/', passport.authenticate('jwt', {session: false}),
   });
 
 //get params :Id
-router.get('/:CatId', passport.authenticate('jwt', {session: false}),(req, res, next) => {
+router.get('/:CatId', (req, res, next) => {
     const id = req.params.CatId;
     Category.findById(id)
         .exec()

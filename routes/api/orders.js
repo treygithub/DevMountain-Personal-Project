@@ -9,7 +9,7 @@ const Order = require("../../models/order");
 const Product = require("../../models/product");
 
 // GET REQ all cart
-router.get("/", 
+router.get("/",passport.authenticate('jwt', {session: false}), 
 (req, res, next) => {
   // Order.find()
   Order.find({userId: req.sessionID})
@@ -107,7 +107,7 @@ router.post("/:id", (req, res, next) => {
 });
 
 //GET PARAMS
-router.get("/:orId",passport.authenticate('jwt', {session: false}),
+router.get("/:orId",
  (req, res, next) => {
   Order.findById(req.params.orId)
     .exec()

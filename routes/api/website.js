@@ -49,7 +49,8 @@ router.get("/", (req, res, next) => {
     });
 });
 
-router.post("/", upload.single('image'), (req, res, next) => {
+router.post("/",passport.authenticate('jwt', {session: false}),
+ upload.single('image'), (req, res, next) => {
   console.log("hit post")
   const website = new Website({
     _id: new mongoose.Types.ObjectId(),
@@ -74,7 +75,8 @@ router.post("/", upload.single('image'), (req, res, next) => {
     });
 });
 
-router.post("/update", upload.single('image'), (req, res, next) => {
+router.post("/update",passport.authenticate('jwt', {session: false}), 
+upload.single('image'), (req, res, next) => {
   console.log("hit post")
   const website = new Website({
     _id: new mongoose.Types.ObjectId(),
@@ -100,7 +102,8 @@ router.post("/update", upload.single('image'), (req, res, next) => {
     });
 });
 
-  router.put("/edit/:id", function (req, res, next){
+  router.put("/edit/:id",passport.authenticate('jwt', {session: false}),
+   function (req, res, next){
 
     Website.findByIdAndUpdate({_id:req.params.id}, { $set: { title: req.body.title, body: req.body.body,titleColor:req.body.titleColor,bodyColor:req.body.bodyColor, currentSide:req.body.currentSide, activeFont:req.body.activeFont }})
     .then(function(){

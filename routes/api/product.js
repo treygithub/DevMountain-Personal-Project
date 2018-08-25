@@ -52,7 +52,7 @@ router.get("/", (req, res, next) => {
     });
 });
 
-router.post("/", upload.single('productImage'), (req, res, next) => {
+router.post("/", passport.authenticate('jwt', {session: false}), upload.single('productImage'), (req, res, next) => {
  
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
@@ -76,7 +76,7 @@ router.post("/", upload.single('productImage'), (req, res, next) => {
     });
 });
 
-router.post("/update", upload.single('productImage'), (req, res, next) => {
+router.post("/update",passport.authenticate('jwt', {session: false}), upload.single('productImage'), (req, res, next) => {
 let id = req.body.params
 console.log('hit hit hit')
 Product.findById(id, function(err,doc){
@@ -112,7 +112,8 @@ router.get("/:productId", (req, res, next) => {
     });
 });
 
-router.patch("/:productId", (req, res, next) => {
+router.patch("/:productId",passport.authenticate('jwt', {session: false}),
+ (req, res, next) => {
   const id = req.params.productId;
   const updateOps = {};
   for (const ops of req.body) {
@@ -133,7 +134,8 @@ router.patch("/:productId", (req, res, next) => {
     });
 });
 
-router.delete("/:productId", (req, res, next) => {
+router.delete("/:productId",passport.authenticate('jwt', {session: false}),
+ (req, res, next) => {
   console.log(req.params)
   const id = req.params.productId;
   Product.remove({ _id: id })
