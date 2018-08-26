@@ -78,7 +78,6 @@ router.post("/", passport.authenticate('jwt', {session: false}), upload.single('
 
 router.post("/update",passport.authenticate('jwt', {session: false}), upload.single('productImage'), (req, res, next) => {
 let id = req.body.params
-console.log('hit hit hit')
 Product.findById(id, function(err,doc){
   if(err){
     console.log('error found');
@@ -136,7 +135,6 @@ router.patch("/:productId",passport.authenticate('jwt', {session: false}),
 
 router.delete("/:productId",passport.authenticate('jwt', {session: false}),
  (req, res, next) => {
-  console.log(req.params)
   const id = req.params.productId;
   Product.remove({ _id: id })
     .exec()

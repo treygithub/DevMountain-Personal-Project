@@ -58,7 +58,7 @@ onFileDrop = (file) => {
 }
 
   render() {
-    console.log( 'category state is ' + this.state.categoryId)
+    // console.log( 'category state is ' + this.state.categoryId)
     return (
       <Form type="multipart/form-data" onSubmit={this.addProduct} className="container" style={{maxWidth:600}}>
         <FormGroup>

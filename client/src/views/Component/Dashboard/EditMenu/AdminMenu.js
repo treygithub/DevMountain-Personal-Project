@@ -25,7 +25,7 @@ class AdminMenu extends Component {
     //Get
     getProducts(){
       axios.get('/api/product').then(payload => {
-        console.log(payload)
+        // console.log(payload)
         this.setState({
           items: payload.data
         });

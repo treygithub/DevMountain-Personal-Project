@@ -33,7 +33,7 @@ class Home extends Component {
    
     render(){
         let {sections} = this.props.website
-        console.log("CHECK TO SEE IF SECTION HAS SIDE PROPERTY", this.props)
+        // console.log("CHECK TO SEE IF SECTION HAS SIDE PROPERTY", this.props)
         let allSections = sections.map(e => {
                  if(e.currentSide === "right"){
                       return (

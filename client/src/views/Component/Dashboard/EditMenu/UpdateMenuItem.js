@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Form, FormGroup, Label, Input, Media, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Dropzone from 'react-dropzone'
 import axios from 'axios';
 
@@ -28,11 +28,11 @@ toggle() {
   }
 
 onChange1(e){
-  console.log('this is e ', e)
+  // console.log('this is e ', e)
   this.setState({[e.target.name]: e.target.value});
 }
 onchange2(val){ 
-  console.log('this is val ', val)
+  // console.log('this is val ', val)
   this.setState({
     categoryId: val
   })
@@ -55,7 +55,7 @@ updateProduct = async(e) => {
 
 onFileDrop = (file) => {
   this.setState({productImage: file[0]});
-  console.log(this.state.productImage);
+  // console.log(this.state.productImage);
 }
 
   render() {
@@ -89,8 +89,6 @@ onFileDrop = (file) => {
             onChange={this.onChange1}
             />
         </FormGroup>
-
-        
         
             <select
             type="select"

@@ -51,7 +51,6 @@ router.get("/", (req, res, next) => {
 
 router.post("/",passport.authenticate('jwt', {session: false}),
  upload.single('image'), (req, res, next) => {
-  console.log("hit post")
   const website = new Website({
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,
@@ -77,7 +76,6 @@ router.post("/",passport.authenticate('jwt', {session: false}),
 
 router.post("/update",passport.authenticate('jwt', {session: false}), 
 upload.single('image'), (req, res, next) => {
-  console.log("hit post")
   const website = new Website({
     _id: new mongoose.Types.ObjectId(),
     title: req.body.title,

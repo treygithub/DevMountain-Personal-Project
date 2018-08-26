@@ -15,7 +15,7 @@ const Admin = require('../../models/Admin');
 
 //@route post api/users/register
 //@desc  register users route
-//access Public
+//access Private
 router.post('/register',passport.authenticate('jwt', {session: false}),  (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
@@ -104,7 +104,6 @@ router.post('/login',(req,res) => {
 router.delete('/delete/:id',passport.authenticate('jwt', {session: false}),
  (req, res, next ) => {
 
-    console.log(req.params)
 Admin.remove({_id: req.params.id})
 .then(result => {
     res.status(200).json({
@@ -122,10 +121,10 @@ Admin.remove({_id: req.params.id})
 // @route   GET api/users/current
 // @desc    Return current user
 // @access  Private
-router.get("/current", passport.authenticate('jwt', {session: false}), (req, res, next) => {
+router.get("/current", passport.authenticate('jwt', {session: false}), 
+(req, res, next) => {
     Admin.find()
       .then(docs => {
-          console.log(docs)
         res.status(200).json(docs)
       })
       .catch(err => {

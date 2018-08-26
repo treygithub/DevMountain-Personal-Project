@@ -12,7 +12,6 @@ router.get('/',(req,res,next) => {
     Category.find()
     .exec()
     .then(docs => {
-        console.log(docs);
         res.status(200).json(docs);
     })
     .catch(err => {
@@ -35,7 +34,6 @@ router.post('/', passport.authenticate('jwt', {session: false}),
     category
       .save()
       .then(result => {
-        console.log(result);
         res.status(201).json({
           message: "Handling POST requests to /category",
           createdCategory: result
@@ -55,7 +53,6 @@ router.get('/:CatId', (req, res, next) => {
     Category.findById(id)
         .exec()
         .then(doc => {
-            console.log("From MongoDB", doc);
             if(doc){
                 res.status(200).json(doc);
             }else{
@@ -79,7 +76,6 @@ router.patch("/:catId",passport.authenticate('jwt', {session: false}),
     Category.update({ _id: id }, { $set: updateOps })
       .exec()
       .then(result => {
-        console.log(result);
         res.status(200).json(result);
       })
       .catch(err => {
