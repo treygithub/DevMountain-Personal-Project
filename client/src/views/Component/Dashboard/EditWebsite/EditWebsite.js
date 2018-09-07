@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText, Col,Row, Container, Media } from 'reactstrap';
 import './Editwebsite.css';
-import moment from 'moment';
+// import moment from 'moment';
 import Dropzone from 'react-dropzone';
 import { SliderPicker } from 'react-color';
 import FontPicker from 'font-picker-react';
