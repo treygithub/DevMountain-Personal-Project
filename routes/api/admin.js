@@ -16,7 +16,7 @@ const Admin = require('../../models/Admin');
 //@route post api/users/register
 //@desc  register users route
 //access Private
-router.post('/register',passport.authenticate('jwt', {session: false}),  (req, res) => {
+router.post('/register',  (req, res) => {
     const { errors, isValid } = validateRegisterInput(req.body);
 
     //check validation

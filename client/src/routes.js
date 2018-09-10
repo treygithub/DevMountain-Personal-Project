@@ -9,7 +9,7 @@ import AdminMenu from './views/Component/Dashboard/EditMenu/AdminMenu';
 import Login from './views/auth/login';
 import DashBoard from './views/Component/Dashboard/Dashboard';
 import EditWebsite from './views/Component/Dashboard/EditWebsite/EditWebsite';
-import EditMenu from './views/Component/Dashboard/EditMenu/EditMenu';
+// import EditMenu from './views/Component/Dashboard/EditMenu/EditMenu';
 // import Cart from './views/Component/cart/Cart';
 
 const Router2 = () =>  (
@@ -24,7 +24,7 @@ const Router2 = () =>  (
           <Route path='/Login' component={ Login }/>
           <Route path='/DashBoard' component={ DashBoard }/>
           <Route path='/EditWebsite' component={ EditWebsite }/>
-          <Route path='/EditMenu' component={ EditMenu }/>
+          {/* <Route path='/EditMenu' component={ EditMenu }/> */}
           {/* <Route path='/Cart' component={ Cart }/> */}
         </Switch>
       

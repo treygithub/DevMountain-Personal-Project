@@ -29,9 +29,9 @@ getCurrentAdmin(){
 }
 
 render(){
-  console.log(admin)
+  // console.log(admin)
   let {admin} = this.state
-console.log(this.state)
+// console.log(this.state)
  let instanceLooper  = admin.map((e,i) => {
 return(
   
@@ -60,7 +60,7 @@ return(
           <div className="btn-group mb-4" role="group">
               <Link to="/EditWebsite" className="btn btn-light">
               <i className="fa fa-desktop" aria-hidden="true"></i> Edit Website</Link>
-              <Link to="/EditMenu" className="btn btn-light">
+              <Link to="/AdminMenu" className="btn btn-light">
               <i className="fa fa-beer" aria-hidden="true"></i> Edit Menu
                 </Link>
               <Link to="Register" className="btn btn-light">

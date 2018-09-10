@@ -115,7 +115,7 @@ onFileDrop = (file) => {
         <FormGroup>
             <Label for="file">File</Label>
               <Dropzone id="file" onDrop={this.onFileDrop}  >
-              <img style={{width: '199px', height: '198px'}} src={this.state.productImage.preview && this.state.productImage.preview} />
+              <img style={{width: '199px', height: '198px'}} alt="hello" src={this.state.productImage.preview && this.state.productImage.preview} />
               </Dropzone>
         </FormGroup>
      

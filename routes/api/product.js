@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const multer = require('multer');
+const passport = require('passport');
 
 
 //Load product model
@@ -52,7 +53,7 @@ router.get("/", (req, res, next) => {
     });
 });
 
-router.post("/", passport.authenticate('jwt', {session: false}), upload.single('productImage'), (req, res, next) => {
+router.post("/", upload.single('productImage'), (req, res, next) => {
  
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
@@ -76,7 +77,7 @@ router.post("/", passport.authenticate('jwt', {session: false}), upload.single('
     });
 });
 
-router.post("/update",passport.authenticate('jwt', {session: false}), upload.single('productImage'), (req, res, next) => {
+router.post("/update", upload.single('productImage'), (req, res, next) => {
 let id = req.body.params
 Product.findById(id, function(err,doc){
   if(err){

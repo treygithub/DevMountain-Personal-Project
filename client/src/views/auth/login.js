@@ -58,6 +58,7 @@ class Login extends Component {
     <Form onSubmit={this.onSubmit}>
         <h1 className="display-4 text-center">Sign In</h1>
         <p className="lead text-center">Log into your Administration account</p>
+        <p className="lead text-center">For full Administration CMS control</p>
         <Media middle>
           <FormGroup >
             <Label for="Email">Email</Label>
@@ -84,9 +85,8 @@ class Login extends Component {
               type="password" 
               name="password" 
               id="Password" 
-              className="pass"
               placeholder="Enter Password" 
-              className={classnames('form-control form-control-lg', {
+              className={classnames('form-control pass form-control-lg', {
                 'is-invalid': errors.password
               })}   
               />

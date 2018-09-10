@@ -15,11 +15,9 @@ class SideNav extends Component{
 
               <li><AnchorLink className="text" href='#about'><Button outline color="secondary">About</Button></AnchorLink></li>
 
-              <li><AnchorLink className="text" href='#events'><Button outline color="secondary">Events</Button></AnchorLink></li>
+              <li><AnchorLink className="text" href='#features'><Button outline color="secondary">Features</Button></AnchorLink></li>
 
-              <li><AnchorLink className="text" href='#mosaic'><Button outline color="secondary">Features</Button></AnchorLink></li>
-
-              <li><AnchorLink className="text" href='#footer'><Button outline color="secondary">Info</Button></AnchorLink>></li>
+              <li><AnchorLink className="text" href='#footer'><Button outline color="secondary">Info</Button></AnchorLink></li>
 
               <li><AnchorLink className="text" href='#Home'><Button outline color="secondary">Home</Button></AnchorLink></li>
               </ul>

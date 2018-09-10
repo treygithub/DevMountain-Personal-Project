@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Media, Row, Container, Col} from 'reactstrap';
+import { Media, Row, Container, Col} from 'reactstrap';
 import floor from './floor.jpg';
 import pic3 from './pic3.jpg';
 import music from './music.jpg';

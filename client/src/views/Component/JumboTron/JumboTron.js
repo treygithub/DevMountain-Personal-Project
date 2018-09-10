@@ -1,16 +1,9 @@
 import React, {Component} from 'react';
 import bbq from './bbq.mp4';
-import './JumboTron.css'
-// import Svg from '../Svg/Svg'
-import BeerSvg from '../Svg/BeerSvg'
+import './JumboTron.css';
+import BeerSvg from '../Svg/BeerSvg';
 
 class JumboTron extends Component  {
-    constructor (){
-        super();
-        this.state={
-            hello:''
-        }
-    }
 
 render(){
     return(
@@ -18,7 +11,6 @@ render(){
             <header className="wrapper">
                 <video src={bbq} autoPlay='true' loop="true"></video>
                 <div className="svg-wrapper">
-                    {/* <Svg/> */}
                     <BeerSvg/>
                  </div>
             </header>
@@ -26,5 +18,4 @@ render(){
     )
 }
 }
-
 export default JumboTron;

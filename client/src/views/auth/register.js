@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { registerAdmin} from '../../ducks/actions/authActions';
 import PropTypes from 'prop-types';
 import  { withRouter } from 'react-router-dom';
-import {Button, Media,Input, Row,FormGroup,Form, Container, Col} from 'reactstrap';
+import {Button, Input, FormGroup,Form, Container} from 'reactstrap';
 import './login.css'
 
 class Register extends Component {
@@ -43,8 +43,6 @@ class Register extends Component {
 
   render(){ 
     const { errors } = this.state;
-
-    const { admin } = this.props.auth
 
   return (
     

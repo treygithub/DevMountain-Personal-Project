@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Button } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import './NavBar.css';
-import Svg from '../About/About'
+
 
 export default class NavBar extends Component {
   constructor(props) {

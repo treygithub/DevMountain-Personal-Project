@@ -41,6 +41,8 @@ addProduct = async(e) => {
   data.append('categoryId', categoryId);
   data.append('productImage', productImage);
   const response = await axios.post("/api/product", data)
+  .then(() => this.props.getProducts())
+  .catch(err => console.log(err))
 }
 
 formatFilename = (filename) => {
@@ -111,7 +113,7 @@ onFileDrop = (file) => {
         <FormGroup>
             <Label for="file">File</Label>
               <Dropzone id="file" onDrop={this.onFileDrop}  >
-              <img style={{width: '199px', height: '198px'}} src={this.state.productImage.preview && this.state.productImage.preview} />
+              <img style={{width: '199px', height: '198px'}} alt="trey" src={this.state.productImage.preview && this.state.productImage.preview} />
               </Dropzone>
             <FormText color="muted">
               Picture and Description fields are optional, however every item must have a name, price and Category.

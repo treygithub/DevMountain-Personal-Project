@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AdminProduct from './AdminProduct';
+import MenuForm from './MenuForm';
 import axios from 'axios';
 import {Col, Container, Row} from 'reactstrap';
 
@@ -32,7 +33,7 @@ class AdminMenu extends Component {
       })
     }
 
-    //map over state and pass props to child
+    //map over state and pass props to child adminProduct.js
     render() {
       let {items} = this.state
 
@@ -128,6 +129,9 @@ class AdminMenu extends Component {
         //Render item to screen + link button to form field
          return (
         <div>
+          <MenuForm
+          getProducts={this.getProducts}
+          />
             <Container style={{marginLeft:120}} id='soup' fluid>
                 <h1 className="soup">Soups</h1>
                 <Row  className="products">   
